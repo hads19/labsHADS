@@ -16,7 +16,13 @@ namespace labsHADS
 
         protected void sendRegister_Click(object sender, EventArgs e)
         {
+            avisoMail.Visible = true;
 
+            int randNum = new Random().Next(500);
+
+            bool r = register.Register.sendVerEmail(randNum, email.Text);
+
+            avisoMail.Text = r.ToString();
         }
     }
 }
