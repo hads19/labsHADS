@@ -40,22 +40,22 @@ namespace labsHADS {
         protected global::System.Web.UI.WebControls.TextBox email;
         
         /// <summary>
-        /// nombre control.
+        /// name control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nombre;
+        protected global::System.Web.UI.WebControls.TextBox name;
         
         /// <summary>
-        /// apellidos control.
+        /// surname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox apellidos;
+        protected global::System.Web.UI.WebControls.TextBox surname;
         
         /// <summary>
         /// password control.
@@ -74,6 +74,15 @@ namespace labsHADS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox repeatPassword;
+        
+        /// <summary>
+        /// compareValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CompareValidator compareValidator;
         
         /// <summary>
         /// rol control.

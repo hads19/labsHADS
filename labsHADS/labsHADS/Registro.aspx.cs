@@ -13,5 +13,10 @@ namespace labsHADS
         {
 
         }
+
+        protected void sendRegister_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
