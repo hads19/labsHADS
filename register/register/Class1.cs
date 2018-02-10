@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Net.Mail;
+using System.Net;
 
 namespace register
 {
@@ -13,9 +14,10 @@ namespace register
         {
             try
             {
+
                 SmtpClient client = new SmtpClient();
                 client.Port = 587;
-                client.Host = "smtp.live.com";
+                client.Host = "smtp-mail.outlook.com";
                 client.EnableSsl = true;
                 client.Timeout = 10000;
                 client.DeliveryMethod = SmtpDeliveryMethod.Network;
@@ -28,8 +30,10 @@ namespace register
 
                 client.Send(mm);
 
+
                 return true;
-            } catch
+            }
+            catch (Exception e)
             {
                 return false;
             }
