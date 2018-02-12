@@ -94,6 +94,24 @@ namespace labsHADS {
         protected global::System.Web.UI.WebControls.RadioButtonList rol;
         
         /// <summary>
+        /// captcha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::BotDetect.Web.UI.WebFormsCaptcha captcha;
+        
+        /// <summary>
+        /// insertCaptcha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox insertCaptcha;
+        
+        /// <summary>
         /// sendRegister control.
         /// </summary>
         /// <remarks>
