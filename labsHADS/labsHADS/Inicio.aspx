@@ -37,7 +37,7 @@
                         <asp:TextBox ID="email" runat="server"></asp:TextBox>
                     </asp:TableCell>
                     <asp:TableCell>
-                        <asp:RequiredFieldValidator ID="erroremail" runat="server" ErrorMessage="*" ControlToValidate="email"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="erroremail" runat="server" ErrorMessage="*" ControlToValidate="email" ForeColor="Red"></asp:RequiredFieldValidator>
                     </asp:TableCell>
 
                 </asp:TableRow>
@@ -46,7 +46,7 @@
                         <asp:TextBox runat="server" ID="password" TextMode="Password" />
                     </asp:TableCell>
                     <asp:TableCell>
-                        <asp:RequiredFieldValidator ID="errorpass" runat="server" ErrorMessage="*" ControlToValidate="password"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="errorpass" runat="server" ErrorMessage="*" ControlToValidate="password" ForeColor="Red"></asp:RequiredFieldValidator>
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
@@ -58,7 +58,7 @@
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>
-                        <asp:HyperLink ID="modificar" runat="server">Modificar Contraseña</asp:HyperLink>
+                        <asp:HyperLink ID="modificar" runat="server" NavigateUrl="~/CambiarPassword.aspx">Modificar Contraseña</asp:HyperLink>
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
