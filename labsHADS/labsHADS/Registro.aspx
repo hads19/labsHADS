@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registro.aspx.cs" Inherits="labsHADS.Registro" %>
 
+<%@ Register Assembly="BotDetect" Namespace="BotDetect.Web.UI" TagPrefix="BotDetect" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -7,6 +9,7 @@
     <title>Resgistro</title>
     <style>
     </style>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body>
     <form id="form" runat="server">
@@ -74,6 +77,20 @@
                         </asp:RadioButtonList>
                     </asp:TableCell>
                 </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>Captcha</asp:TableCell><asp:TableCell>
+                        <!-- -->
+                        <BotDetect:WebFormsCaptcha ID="captcha" runat="server" ControlToValidate="insertCaptcha" ErrorMessage="Mal"/>
+                        <asp:TextBox runat="server" ID="insertCaptcha" />
+                    </asp:TableCell>
+                </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell>Captcha G</asp:TableCell><asp:TableCell>
+                        <!-- -->
+                        <div class="g-recaptcha" data-sitekey="6Lf91UUUAAAAAM1nvJAD9fGu40jACk3e-lS7N_7o"></div>
+                    </asp:TableCell>
+                </asp:TableRow>
+
             </asp:Table>
             <asp:Button ID="sendRegister" Text="Enviar" runat="server" OnClick="sendRegister_Click" />
             <br />
