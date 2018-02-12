@@ -95,7 +95,7 @@
             <asp:Button ID="sendRegister" Text="Enviar" runat="server" OnClick="sendRegister_Click" />
             <br />
             <br />
-            <asp:Label ID="avisoMail" runat="server" Text="Registro correcto, se te ha enviado un email para verificar tu cuenta"
+            <asp:Label ID="avisoMail" runat="server" Text="Registro correcto, se te ha enviado un email para verificar tu cuenta."
                 Visible="False"></asp:Label>
         </div>
     </form>

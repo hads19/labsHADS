@@ -39,18 +39,26 @@
                     <asp:TableCell>
                         <asp:RequiredFieldValidator ID="erroremail" runat="server" ErrorMessage="*" ControlToValidate="email" ForeColor="Red"></asp:RequiredFieldValidator>
                     </asp:TableCell>
-
                 </asp:TableRow>
+
                 <asp:TableRow>
                     <asp:TableCell>Password</asp:TableCell><asp:TableCell>
-                        <asp:TextBox runat="server" ID="password" TextMode="Password" />
-                    </asp:TableCell>
-                    <asp:TableCell>
+                        <asp:TextBox runat="server" ID="password" TextMode="Password"/>
+                    </asp:TableCell><asp:TableCell>
                         <asp:RequiredFieldValidator ID="errorpass" runat="server" ErrorMessage="*" ControlToValidate="password" ForeColor="Red"></asp:RequiredFieldValidator>
                     </asp:TableCell>
                 </asp:TableRow>
+                <asp:TableRow>
+                    <asp:TableCell></asp:TableCell><asp:TableCell>
+                        Show password
+                        <asp:CheckBox ID="showPass" runat="server" OnCheckedChanged="ShowPass_CheckedChanged" AutoPostBack="true" />
+                    </asp:TableCell><asp:TableCell>
+                    </asp:TableCell>
+                </asp:TableRow>
             </asp:Table>
-            <asp:Table ID="Table2" runat="server" Style="z-index: 1; left: 150px; top: 110px; position: absolute; height: 54px; width: 155px; right: 312px;">
+            <asp:Button ID="login" runat="server" Text="Login" Style="top: 120px; left: 50px; position: absolute; height: 26px; width: 56px;" />
+            <br />
+            <asp:Table ID="Table2" runat="server" Style="z-index: 1; left: 150px; top: 135px; position: absolute; height: 61px; width: 155px;">
                 <asp:TableRow>
                     <asp:TableCell>
                         <asp:HyperLink ID="registro" runat="server" NavigateUrl="~/Registro.aspx">Quiero Regístrarme</asp:HyperLink>
@@ -62,7 +70,6 @@
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
-            <asp:Button ID="login" runat="server" Text="Login" Style="top: 120px; left: 50px; position: absolute; height: 26px; width: 56px" />
         </div>
     </form>
 </body>
