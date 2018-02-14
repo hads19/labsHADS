@@ -16,9 +16,9 @@ namespace labsHADS
 
         }
 
-        protected void sendRegister_Click(object sender, EventArgs e)
+        protected void SendRegister_Click(object sender, EventArgs e)
         {
-            if(!validate())
+            if (!ValidateCaptcha())
             {
                 avisoMail.Text = "Captcha incorrecto, vuelve a intentarlo.";
                 avisoMail.Visible = true;
@@ -34,8 +34,8 @@ namespace labsHADS
             //avisoMail.Text = r.ToString();
         }
 
-        //Valida los captchas, nuestro lema: seguridad x2, vadillos x0
-        protected bool validate()
+        //Valida los captchas
+        protected bool ValidateCaptcha()
         {
             //Captcha de letras
             bool isHuman = captcha.Validate(insertCaptcha.Text);
