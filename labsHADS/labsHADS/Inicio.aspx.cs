@@ -13,5 +13,19 @@ namespace labsHADS
         {
 
         }
+
+        protected void ShowPass_CheckedChanged(object sender, EventArgs e)
+        {
+            //Funciona regular
+            if (showPass.Checked)
+            {
+                password.TextMode = TextBoxMode.SingleLine;
+            }
+            else
+            {
+                password.TextMode = TextBoxMode.Password;
+            }
+
+        }
     }
 }

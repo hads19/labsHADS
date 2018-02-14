@@ -20,12 +20,12 @@ namespace labsHADS
         {
             if(!validate())
             {
-                avisoMail.Text = "Captcha incorrecto";
+                avisoMail.Text = "Captcha incorrecto, vuelve a intentarlo.";
                 avisoMail.Visible = true;
                 return;
             }
 
-            avisoMail.Text = "Registro correcto, se te ha enviado un email para verificar tu cuenta";
+            avisoMail.Text = "Registro correcto, se te ha enviado un email para verificar tu cuenta.";
             avisoMail.Visible = true;
             int randNum = new Random().Next(500);
 
