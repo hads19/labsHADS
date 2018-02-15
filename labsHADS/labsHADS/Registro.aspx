@@ -17,7 +17,7 @@
 <body style="height: 452px">
     <form id="form" runat="server">
         <div style="height: 439px">
-            <asp:Table ID="datos" runat="server" Style="top: 40px; left: 50px; position: absolute; height: 172px; width: 828px; right: 668px">
+            <asp:Table ID="datos" runat="server" Style="top: 45px; left: 50px; position: absolute; height: 172px; width: 828px; right: 79px">
                 <asp:TableRow>
                     <asp:TableCell>Email</asp:TableCell>
                     <asp:TableCell>
@@ -98,8 +98,7 @@
             <br />
             <asp:Label ID="avisoMail" runat="server" Text="Registro correcto, se te ha enviado un email para verificar tu cuenta."
                 Visible="False" Style="top: 412px; left: 220px; position: absolute; height: 19px; width: 580px"></asp:Label>
-            <br />
-            <asp:HyperLink ID="inicio" runat="server" NavigateUrl="~/Inicio.aspx" Style="top: 415px; left: 663px; position: absolute; height: 19px; width: 120px">Volver al inicio</asp:HyperLink>
+            <asp:HyperLink ID="inicio" runat="server" NavigateUrl="~/Inicio.aspx" Style="z-index: 1; left: 326px; top: 455px; position: absolute">Volver al inicio</asp:HyperLink>
         </div>
     </form>
 </body>
