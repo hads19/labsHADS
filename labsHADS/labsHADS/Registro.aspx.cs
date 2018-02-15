@@ -59,12 +59,13 @@ namespace labsHADS
         public bool ValidateReCaptcha(ref string errorMessage)
         {
             var gresponse = Request["g-recaptcha-response"];
-            string secret = "6Lf91UUUAAAAAG_86ZvB8QV0ug-GfHLQV80AM7Xx";
+            string secret = "6LdgU0YUAAAAADcLCefwPHUQPUrfghwLPVHUn-uv";
             string ipAddress = GetIpAddress();
 
             var client = new WebClient();
 
-            string url = string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}&remoteip={2}",
+            string url = string.Format(
+                "https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}&remoteip={2}",
                 secret, gresponse, ipAddress);
 
 
