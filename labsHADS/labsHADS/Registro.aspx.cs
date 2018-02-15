@@ -127,6 +127,5 @@ namespace labsHADS
             [JsonProperty("error-codes")]
             public List<string> ErrorCodes { get; set; }
         }
-
     }
 }

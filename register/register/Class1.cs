@@ -5,12 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Net.Mail;
 using System.Net;
+using System.Data.SqlClient;
 
 namespace register
 {
     public static class Register
     {
-        public static bool sendVerEmail(int num, string email)
+        public static void Main()
+        {
+            Prueba();
+        }
+
+        public static bool SendVerEmail(int num, string email)
         {
             try
             {
@@ -37,6 +43,29 @@ namespace register
             {
                 return false;
             }
+        }
+
+        public static string Prueba()
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(
+                    "Server=tcp:hads19ac.database.windows.net,1433;" +
+                    "Initial Catalog=hads19ac;" +
+                    "Persist Security Info=False;" +
+                    "User ID=hads19;" +
+                    "Password=XXX;" + //CAMBIAR LA CONTRASEÑA
+                    "MultipleActiveResultSets=False;Encrypt=True;" +
+                    "TrustServerCertificate=False;Connection Timeout=30;");
+
+                connection.Open();
+                connection.Close();
+
+            } catch (Exception e)
+            {
+                return e.Message;
+            }
+                return "Funciona";
         }
     }
 }
