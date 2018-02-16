@@ -6,6 +6,7 @@ using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using register;
 
 namespace labsHADS
 {
@@ -18,20 +19,23 @@ namespace labsHADS
 
         protected void SendRegister_Click(object sender, EventArgs e)
         {
+            //Estos son los captchas
+            /*
             if (!ValidateCaptcha())
             {
                 avisoMail.Text = "Captcha incorrecto, vuelve a intentarlo.";
                 avisoMail.Visible = true;
                 return;
             }
-
-            avisoMail.Text = "Registro correcto, se te ha enviado un email para verificar tu cuenta.";
-            avisoMail.Visible = true;
+            */
             int randNum = new Random().Next(500);
+            avisoMail.Text = Register.Registrar(email.Text, name.Text, surname.Text, randNum, rol.Text, password.Text);
 
-            //bool r = register.Register.sendVerEmail(randNum, email.Text);
-
-            //avisoMail.Text = r.ToString();
+            
+            avisoMail.Text = Register.SendVerEmail(randNum, email.Text);
+            
+            
+            avisoMail.Visible = true;
         }
 
         //Valida los captchas
@@ -55,6 +59,14 @@ namespace labsHADS
 
             return true;
         }
+
+        /*
+         * De aqui para bajo ni mirar, son las funciones para que funcionen los captchas de google
+         * 
+         * 
+         * 
+         * 
+         */
 
         public bool ValidateReCaptcha(ref string errorMessage)
         {
