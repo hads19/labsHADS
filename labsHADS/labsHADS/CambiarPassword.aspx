@@ -24,9 +24,9 @@
                 </asp:TableRow>
             </asp:Table>
 
-            <asp:Button ID="solicitar" runat="server" Text="Solicitar Cambiar Contraseña" style="top: 83px; left: 50px; position: absolute; height: 26px; width: 325px; bottom: 234px;" />
+            <asp:Button ID="solicitar" runat="server" Text="Solicitar Cambiar Contraseña" style="top: 83px; left: 50px; position: absolute; height: 26px; width: 325px; bottom: 234px;" OnClick="solicitar_Click" />
 
-            <asp:Table ID="tclave" runat="server" style="top: 116px; left: 51px; position: absolute; height: 28px; width: 484px; left: 50px;" Enabled="False">
+            <asp:Table ID="tclave" runat="server" style="top: 116px; left: 51px; position: absolute; height: 28px; width: 484px; left: 50px;">
                 <asp:TableRow>
                     <asp:TableCell>
                         Introducir Clave
@@ -40,15 +40,15 @@
                 </asp:TableRow>
             </asp:Table>
 
-            <asp:Button ID="confirmar" runat="server" Text="Confirmar Clave" style="top: 152px; left: 50px; position: absolute; height: 26px; width: 325px" Enabled="False" />
+            <asp:Button ID="confirmar" runat="server" Text="Confirmar Clave" style="top: 152px; left: 50px; position: absolute; height: 26px; width: 325px" OnClick="confirmar_Click" />
 
-            <asp:Table ID="tpass" runat="server" style="z-index: 1; left: 50px; top: 191px; position: absolute; height: 54px; width: 668px" Enabled="False">
+            <asp:Table ID="tpass" runat="server" style="z-index: 1; left: 50px; top: 191px; position: absolute; height: 54px; width: 668px">
                 <asp:TableRow>
                     <asp:TableCell>
                         Introducir contraseña
                     </asp:TableCell>
                     <asp:TableCell>
-                        <asp:TextBox ID="pass" runat="server" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="pass" runat="server" TextMode="Password" ></asp:TextBox>
                     </asp:TableCell>
                     <asp:TableCell>
                         <asp:RequiredFieldValidator ID="errpass1" runat="server" ErrorMessage="*Campo obligatorio" ControlToValidate="pass" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -60,7 +60,7 @@
                         Repetir contraseña
                     </asp:TableCell>
                     <asp:TableCell>
-                        <asp:TextBox ID="pass2" runat="server" TextMode="Password"></asp:TextBox>
+                        <asp:TextBox ID="pass2" runat="server" TextMode="Password" ></asp:TextBox>
                     </asp:TableCell>
                     <asp:TableCell>
                         <asp:RequiredFieldValidator ID="errpass2" runat="server" ErrorMessage="*Campo obligatorio" ControlToValidate="pass2" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -71,9 +71,12 @@
                 </asp:TableRow>
             </asp:Table>
 
-            <asp:Button ID="cambiar" runat="server" Text="Cambiar Contraseña" style="top: 257px; left: 50px; position: absolute; height: 26px; width: 325px" Enabled="False" />
+            <asp:Button ID="cambiar" runat="server" Text="Cambiar Contraseña" style="top: 257px; left: 50px; position: absolute; height: 26px; width: 325px" OnClick="cambiar_Click" />
 
             <asp:HyperLink ID="inicio" runat="server" NavigateUrl="~/Inicio.aspx" style="top: 300px; left: 447px; position: absolute; height: 19px; width: 120px">Volver al inicio</asp:HyperLink>
+
+
+            <asp:Label ID="Label30" runat="server" style="z-index: 1; left: 37px; top: 357px; position: absolute" Text="Label"></asp:Label>
 
 
         </div>

@@ -51,11 +51,11 @@
                         Show Password
                         <asp:CheckBox ID="showPass" runat="server" OnCheckedChanged="ShowPass_CheckedChanged" AutoPostBack="true" />
                     </asp:TableCell><asp:TableCell>
-                    </asp:TableCell></asp:TableRow></asp:Table><asp:Button ID="login" runat="server" Text="Login" Style="top: 153px; left: 50px; position: absolute; height: 26px; width: 56px;" /><br />
+                    </asp:TableCell></asp:TableRow></asp:Table><asp:Button ID="login" runat="server" Text="Login" Style="top: 153px; left: 50px; position: absolute; height: 26px; width: 56px;" OnClick="login_Click" /><br />
             <asp:Table ID="Table2" runat="server" Style="z-index: 1; left: 119px; top: 134px; position: absolute; height: 61px; width: 155px;"><asp:TableRow>
                     <asp:TableCell>
                         <asp:HyperLink ID="registro" runat="server" NavigateUrl="~/Registro.aspx">Quiero Regístrarme</asp:HyperLink>
                     </asp:TableCell></asp:TableRow><asp:TableRow>
                     <asp:TableCell>
                         <asp:HyperLink ID="modificar" runat="server" NavigateUrl="~/CambiarPassword.aspx">Modificar Contraseña</asp:HyperLink>
-                    </asp:TableCell></asp:TableRow></asp:Table></div></form></body></html>
+                    </asp:TableCell></asp:TableRow></asp:Table><asp:Label ID="Label1" runat="server" style="z-index: 1; left: 57px; top: 258px; position: absolute"></asp:Label></div></form></body></html>

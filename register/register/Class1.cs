@@ -129,3 +129,134 @@ namespace register
         }
     }
 }
+namespace login { 
+
+    public static class Login1
+    {
+        public const string connectionString = "Data Source=tcp:hads19ac.database.windows.net,1433;Initial Catalog = hads19ac; Persist Security Info=True;User ID = hads19; Password=CFB10payaso";
+
+        public static string logear(string email, string pass)
+        {
+
+            try
+            {
+
+                string result = "";
+                //Definición de la conexión
+                SqlConnection connection = new SqlConnection(connectionString);
+
+                //Comprobamos los valores en la BD
+                connection.Open();
+
+                string checkQuery = "SELECT * FROM Usuarios WHERE email = @email AND pass = @pass";
+
+                SqlCommand checkSql = new SqlCommand(checkQuery, connection);
+
+                checkSql.Parameters.AddWithValue("@email", email);
+                checkSql.Parameters.AddWithValue("@pass", pass);
+
+                var numRows = checkSql.ExecuteScalar();
+
+                if (numRows != null)
+                {
+                    result = "Logeado correctamente. Bienvenido.";
+                }
+                else {
+                    result = "Email o contraseña incorrecta. Vuelve a intentarlo.";
+                }
+                connection.Close();
+                return result;
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+
+           
+
+        }
+    }
+}
+namespace cambio{
+
+    public static class Cambio
+    {
+        public const string connectionString = "Data Source=tcp:hads19ac.database.windows.net,1433;Initial Catalog = hads19ac; Persist Security Info=True;User ID = hads19; Password=CFB10payaso";
+
+        public static string cambiar1(string email)
+        {
+            try
+            {
+                string result = "";
+
+                //Definición de la conexión
+                SqlConnection connection = new SqlConnection(connectionString);
+
+                //Comprobamos los valores en la BD
+                connection.Open();
+
+                string checkQuery = "SELECT * FROM Usuarios WHERE email = @email";
+
+                SqlCommand checkSql = new SqlCommand(checkQuery, connection);
+
+                checkSql.Parameters.AddWithValue("@email", email);
+
+                var numRows = checkSql.ExecuteScalar();
+
+                if (numRows != null)
+                {
+                    result = "Se le enviara al email un codigo";
+                }
+                else
+                {
+                    result = "Email incorrecta. Vuelve a intentarlo.";
+                }
+                connection.Close();
+                return result;
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+            
+        }
+
+        public static string cambiar2(string email, string pass)
+        {
+            try
+            {
+                
+
+                //Definición de la conexión
+                SqlConnection connection = new SqlConnection(connectionString);
+
+                //Comprobamos los valores en la BD
+                connection.Open();
+
+                string checkQuery = "UPDATE Usuarios SET pass = @pass WHERE email = @email";
+                   
+
+                SqlCommand checkSql = new SqlCommand(checkQuery, connection);
+
+                checkSql.Parameters.AddWithValue("@pass", pass);
+                checkSql.Parameters.AddWithValue("@email", email);
+
+                checkSql.ExecuteNonQuery();
+
+                connection.Close();
+                return "Funciona";
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+
+        }
+
+    }
+
+}
+
+
+
+

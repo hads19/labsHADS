@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using login;
+
 
 namespace labsHADS
 {
@@ -26,6 +28,12 @@ namespace labsHADS
                 password.TextMode = TextBoxMode.Password;
             }
 
+        }
+
+        protected void login_Click(object sender, EventArgs e)
+        {
+            Label1.Text = Login1.logear(email.Text, password.Text);
+            
         }
     }
 }
