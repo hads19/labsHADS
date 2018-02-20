@@ -27,8 +27,7 @@ namespace register
                     "www.youtube.com/alexelcapo/?email=" + email + "&num=" + num +
                     "</br>" +
                     "</br>" +
-                    "Si recibiste este mensaje por error, por favor, eliminalo inmediatamente y jamas hables a nadie sobre el." +
-                    " Recuerda, conocemos tu email.";
+                    "Si recibiste este mensaje por error, por favor, eliminalo.";
 
                 message.Subject = "Verifique su email amigo";
                 message.Body = mailbody;
@@ -127,9 +126,49 @@ namespace register
             }
             return "Funciona";
         }
+        public static string Verificar(string email, int codigo)
+        {
+            try
+            {
+                SqlConnection connection = new SqlConnection(connectionString);
+
+                connection.Open();
+
+                string checkQuery = "SELECT numConfir FROM Usuarios WHERE email = @email AND numConfir = @num";
+
+                SqlCommand checkSql = new SqlCommand(checkQuery, connection);
+                checkSql.Parameters.AddWithValue("@email", email);
+                checkSql.Parameters.AddWithValue("@num", codigo);
+
+                var numRows = checkSql.ExecuteScalar();
+
+                if (numRows != null)
+                {
+                    string updateQuery = "UPDATE Usuarios SET confirmado = 'True' WHERE email = @email";
+
+                    SqlCommand updateSql = new SqlCommand(updateQuery, connection);
+                    updateSql.Parameters.AddWithValue("@email", email);
+
+                    updateSql.ExecuteNonQuery();
+
+                    connection.Close();
+                    return "Email verificado correctamente, ya puedes iniciar sesión!";
+                }
+                else
+                {
+                    connection.Close();
+                    return "Código de verificación incorrecto, no toquetees con la URL";
+                }
+            }
+            catch (Exception)
+            {
+                return "Ha habido un problema";
+            }
+        }
     }
 }
-namespace login { 
+namespace login
+{
 
     public static class Login1
     {
@@ -148,12 +187,13 @@ namespace login {
                 //Comprobamos los valores en la BD
                 connection.Open();
 
-                string checkQuery = "SELECT * FROM Usuarios WHERE email = @email AND pass = @pass";
+                string checkQuery = "SELECT * FROM Usuarios WHERE email = @email AND pass = @pass AND confirmado = 'True'";
 
                 SqlCommand checkSql = new SqlCommand(checkQuery, connection);
 
                 checkSql.Parameters.AddWithValue("@email", email);
                 checkSql.Parameters.AddWithValue("@pass", pass);
+
 
                 var numRows = checkSql.ExecuteScalar();
 
@@ -161,7 +201,8 @@ namespace login {
                 {
                     result = "Logeado correctamente. Bienvenido.";
                 }
-                else {
+                else
+                {
                     result = "Email o contraseña incorrecta. Vuelve a intentarlo.";
                 }
                 connection.Close();
@@ -172,12 +213,13 @@ namespace login {
                 return e.Message;
             }
 
-           
+
 
         }
     }
 }
-namespace cambio{
+namespace cambio
+{
 
     public static class Cambio
     {
@@ -205,7 +247,7 @@ namespace cambio{
 
                 if (numRows != null)
                 {
-                    result = "Se le enviara al email un codigo";
+                    result = "Se le enviará al email un codigo";
                 }
                 else
                 {
@@ -218,14 +260,14 @@ namespace cambio{
             {
                 return e.Message;
             }
-            
+
         }
 
         public static string cambiar2(string email, string pass)
         {
             try
             {
-                
+
 
                 //Definición de la conexión
                 SqlConnection connection = new SqlConnection(connectionString);
@@ -234,7 +276,7 @@ namespace cambio{
                 connection.Open();
 
                 string checkQuery = "UPDATE Usuarios SET pass = @pass WHERE email = @email";
-                   
+
 
                 SqlCommand checkSql = new SqlCommand(checkQuery, connection);
 
