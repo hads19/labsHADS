@@ -12,10 +12,17 @@ namespace labsHADS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string email = Request.QueryString["email"];
-            int codigo = Convert.ToInt16(Request.QueryString["num"]);
+            if (!String.IsNullOrEmpty(Request.QueryString["email"]) && !String.IsNullOrEmpty(Request.QueryString["num"]))
+            {
+                string email = Request.QueryString["email"];
+                int codigo = Convert.ToInt32(Request.QueryString["num"]);
 
-            Label1.Text = Register.Verificar(email, codigo);
+                Label1.Text = Register.Verificar(email, codigo);
+            }
+            else
+            {
+                Label1.Text = "Vaya, ha habido un error.";
+            }
         }
     }
 }

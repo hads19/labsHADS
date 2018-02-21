@@ -11,7 +11,6 @@
     <form id="form1" runat="server">
         <div>
             <p style="top: 50px; left: 50px; position: absolute; height: 19px; width: 1526px">
-                El registro se ha realizado correctamente, ya puedes iniciar sesion con tu cuenta.<br />
                 <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
             </p>
             <asp:HyperLink ID="inicio" runat="server" NavigateUrl="~/Inicio.aspx" Style="top: 87px; left: 447px; position: absolute; height: 19px; width: 120px">Volver al inicio</asp:HyperLink>
