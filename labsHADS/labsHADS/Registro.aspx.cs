@@ -20,21 +20,27 @@ namespace labsHADS
         protected void SendRegister_Click(object sender, EventArgs e)
         {
             //Estos son los captchas
-            
+
             if (!ValidateCaptcha())
             {
                 avisoMail.Text = "Captcha incorrecto, vuelve a intentarlo.";
                 avisoMail.Visible = true;
                 return;
             }
-            
-            int randNum = new Random().Next(1000000);
-            avisoMail.Text = Register.Registrar(email.Text, name.Text, surname.Text, randNum, rol.Text, password.Text);
 
-            
-            avisoMail.Text += " " + Register.SendVerEmail(randNum, email.Text);
-            
-            
+            int randNum = new Random().Next(1000000);
+
+            string resp = Register.Registrar(email.Text, name.Text, surname.Text, randNum, rol.Text, password.Text);
+
+            if (resp.Equals("EMAIL"))
+            {
+                avisoMail.Text = "Este email ya está registrado, utiliza otro.";
+            }
+            else
+            {
+                avisoMail.Text = Register.SendVerEmail(randNum, email.Text);
+            }
+
             avisoMail.Visible = true;
         }
 

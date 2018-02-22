@@ -24,7 +24,7 @@ namespace register
                 string mailbody = "Te has registrado correctamente en nuestra página, pero ahora necesitamos que verifiques tu correo para" +
                     " poder acceder a nuestras escasas y deficientes funcionalidades. Por favor, haz click en el enlace a continuación: " +
                     "</br>" +
-                    "www.youtube.com/alexelcapo/?email=" + email + "&num=" + num +
+                    "http://labshads19.azurewebsites.net/Confirmar.aspx/?email=" + email + "&num=" + num +
                     "</br>" +
                     "</br>" +
                     "Si recibiste este mensaje por error, por favor, eliminalo.";
@@ -113,7 +113,7 @@ namespace register
                 {
                     if (e.Message.Contains("PRIMARY KEY"))
                     {
-                        return "Este émail ya está registrado, utiliza otro.";
+                        return "EMAIL";
                     }
                     return e.Message;
 
@@ -126,6 +126,7 @@ namespace register
             }
             return "Funciona";
         }
+
         public static string Verificar(string email, int codigo)
         {
             try
@@ -203,7 +204,24 @@ namespace login
                 }
                 else
                 {
-                    result = "Email o contraseña incorrecta. Vuelve a intentarlo.";
+                    string verQuery = "SELECT * FROM Usuarios WHERE email = @email AND pass = @pass AND confirmado = 'False'";
+
+                    SqlCommand verSql = new SqlCommand(verQuery, connection);
+
+                    verSql.Parameters.AddWithValue("@email", email);
+                    verSql.Parameters.AddWithValue("@pass", pass);
+
+                    numRows = verSql.ExecuteScalar();
+
+                    if (numRows == null)
+                    {
+                        result = "Email o contraseña incorrecta. Vuelve a intentarlo.";
+                    }
+                    else
+                    {
+                        result = "Este email aun no está confirmado";
+                    }
+                    
                 }
                 connection.Close();
                 return result;
