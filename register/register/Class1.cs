@@ -24,7 +24,7 @@ namespace register
                 string mailbody = "Te has registrado correctamente en nuestra página, pero ahora necesitamos que verifiques tu correo para" +
                     " poder acceder a nuestras escasas y deficientes funcionalidades. Por favor, haz click en el enlace a continuación: " +
                     "</br>" +
-                    "http://labshads19.azurewebsites.net/Confirmar.aspx/?email=" + email + "&num=" + num +
+                    "<a href ='http://labshads19.azurewebsites.net/Confirmar.aspx/?email=" + email + "&num=" + num + "'> CONFIRMAR MAIL </a>" +
                     "</br>" +
                     "</br>" +
                     "Si recibiste este mensaje por error, por favor, eliminalo.";
