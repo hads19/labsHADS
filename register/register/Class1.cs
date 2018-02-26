@@ -255,7 +255,7 @@ namespace cambio
                 //Comprobamos los valores en la BD
                 connection.Open();
 
-                string checkQuery = "SELECT * FROM Usuarios WHERE email = @email";
+                string checkQuery = "SELECT * FROM Usuarios WHERE email = @email AND confirmado = 'True'";
 
                 SqlCommand checkSql = new SqlCommand(checkQuery, connection);
 
@@ -263,13 +263,31 @@ namespace cambio
 
                 var numRows = checkSql.ExecuteScalar();
 
+
+
                 if (numRows != null)
                 {
-                    result = "Se le enviará al email un codigo";
+                    result = "1";
                 }
                 else
                 {
-                    result = "Email incorrecta. Vuelve a intentarlo.";
+                    string verQuery = "SELECT * FROM Usuarios WHERE email = @email AND confirmado = 'False'";
+
+                    SqlCommand verSql = new SqlCommand(verQuery, connection);
+
+                    verSql.Parameters.AddWithValue("@email", email);
+
+                    numRows = verSql.ExecuteScalar();
+
+                    if (numRows == null)
+                    {
+                        result = "Este email es incorrcto.";
+                    }
+                    else
+                    {
+                        result = "Este email aun no está confirmado";
+                    }
+
                 }
                 connection.Close();
                 return result;
@@ -278,7 +296,41 @@ namespace cambio
             {
                 return e.Message;
             }
+        }
 
+        public static string SendVerClave(int num, string email)
+        {
+            try
+            {
+                string to = email; //To address    
+                string from = "hads19@outlook.es"; //From address    
+                MailMessage message = new MailMessage(from, to);
+
+                string mailbody = "La clave para poder cambiar el password es: " + num;
+                message.Subject = "Clave";
+                message.Body = mailbody;
+                message.BodyEncoding = Encoding.UTF8;
+                message.IsBodyHtml = true;
+                SmtpClient client = new SmtpClient("smtp-mail.outlook.com", 587); //Gmail smtp    
+                System.Net.NetworkCredential basicCredential1 = new
+                System.Net.NetworkCredential("hads19@outlook.es", "CFB10titan");
+                client.EnableSsl = true;
+                client.UseDefaultCredentials = false;
+                client.Credentials = basicCredential1;
+                try
+                {
+                    client.Send(message);
+                }
+                catch (Exception ex)
+                {
+                    return ex.ToString();
+                }
+                return "Clave enviada a su correo.";
+            }
+            catch (Exception ex)
+            {
+                return ex.ToString();
+            }
         }
 
         public static string cambiar2(string email, string pass)
@@ -304,7 +356,7 @@ namespace cambio
                 checkSql.ExecuteNonQuery();
 
                 connection.Close();
-                return "Funciona";
+                return "El password se ha cambiado correctamente.";
             }
             catch (Exception e)
             {
@@ -316,7 +368,3 @@ namespace cambio
     }
 
 }
-
-
-
-

@@ -26,7 +26,7 @@
 
             <asp:Button ID="solicitar" runat="server" Text="Solicitar Cambiar Contraseña" style="top: 83px; left: 50px; position: absolute; height: 26px; width: 325px; bottom: 234px;" OnClick="solicitar_Click" />
 
-            <asp:Table ID="tclave" runat="server" style="top: 116px; left: 51px; position: absolute; height: 28px; width: 484px; left: 50px;">
+            <asp:Table ID="tclave" runat="server" style="top: 116px; left: 51px; position: absolute; height: 28px; width: 484px; left: 50px;" Visible="False">
                 <asp:TableRow>
                     <asp:TableCell>
                         Introducir Clave
@@ -40,9 +40,9 @@
                 </asp:TableRow>
             </asp:Table>
 
-            <asp:Button ID="confirmar" runat="server" Text="Confirmar Clave" style="top: 152px; left: 50px; position: absolute; height: 26px; width: 325px" OnClick="confirmar_Click" />
+            <asp:Button ID="confirmar" runat="server" Text="Confirmar Clave" style="top: 152px; left: 50px; position: absolute; height: 26px; width: 325px" OnClick="confirmar_Click" Visible="False" />
 
-            <asp:Table ID="tpass" runat="server" style="z-index: 1; left: 50px; top: 191px; position: absolute; height: 54px; width: 668px">
+            <asp:Table ID="tpass" runat="server" style="z-index: 1; left: 50px; top: 191px; position: absolute; height: 54px; width: 668px" Visible="False">
                 <asp:TableRow>
                     <asp:TableCell>
                         Introducir contraseña
@@ -71,12 +71,12 @@
                 </asp:TableRow>
             </asp:Table>
 
-            <asp:Button ID="cambiar" runat="server" Text="Cambiar Contraseña" style="top: 257px; left: 50px; position: absolute; height: 26px; width: 325px" OnClick="cambiar_Click" />
+            <asp:Button ID="cambiar" runat="server" Text="Cambiar Contraseña" style="top: 257px; left: 50px; position: absolute; height: 26px; width: 325px" OnClick="cambiar_Click" Visible="False" />
 
             <asp:HyperLink ID="inicio" runat="server" NavigateUrl="~/Inicio.aspx" style="top: 300px; left: 447px; position: absolute; height: 19px; width: 120px">Volver al inicio</asp:HyperLink>
 
 
-            <asp:Label ID="Label30" runat="server" style="z-index: 1; left: 37px; top: 357px; position: absolute" Text="Label"></asp:Label>
+            <asp:Label ID="Label30" runat="server" style="z-index: 1; left: 37px; top: 357px; position: absolute"></asp:Label>
 
 
         </div>
