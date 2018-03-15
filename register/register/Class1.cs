@@ -376,33 +376,57 @@ namespace tareas
     {
         public const string connectionString = "Data Source=tcp:hads19ac.database.windows.net,1433;Initial Catalog = hads19ac; Persist Security Info=True;User ID = hads19; Password=CFB10payaso";
 
-        public static DataView BuscarTareasGenericas(string email)
+        public static DataView BuscarTareasGenericas(string email, string asignatura)
         {
 
-                string tareasQuery = "SELECT CodTarea, Descripcion, TareasGenericas.HEstimadas, TipoTarea " +
-                        "FROM EstudiantesTareas INNER JOIN TareasGenericas " +
-                        "ON EstudiantesTareas.CodTarea = TareasGenericas.Codigo " +
-                        "WHERE Email = @email AND Explotacion = 1";
+            string tareasQuery = "SELECT CodAsig, Codigo, Descripcion, HEstimadas, TipoTarea " +
+                    "FROM TareasGenericas " +
+                    "WHERE Explotacion = 1 AND Codigo IN (SELECT CodTarea FROM EstudiantesTareas WHERE Email = @email)";
 
-                SqlConnection connection = new SqlConnection(connectionString);
+            SqlConnection connection = new SqlConnection(connectionString);
 
-                SqlCommand tareasSql = new SqlCommand(tareasQuery, connection);
+            SqlCommand tareasSql = new SqlCommand(tareasQuery, connection);
 
-                tareasSql.Parameters.AddWithValue("@email", email);
+            tareasSql.Parameters.AddWithValue("@email", email);
 
-                SqlDataAdapter dataAdapter = new SqlDataAdapter(tareasSql);
-                SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(dataAdapter);
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(tareasSql);
+            SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(dataAdapter);
 
-                DataTable dt = new DataTable("tTareas");
-                DataSet ds = new DataSet("sTareas");
+            DataTable dt = new DataTable("tTareas");
+            DataSet ds = new DataSet("sTareas");
 
-                dataAdapter.Fill(ds, "tTareas");
-                dt = ds.Tables["tTareas"];
+            dataAdapter.Fill(ds, "tTareas");
+            dt = ds.Tables["tTareas"];
 
-                DataView dv = new DataView(dt);
+            DataView dv = new DataView(dt);
 
-                return dv;
+            dv.RowFilter = "CodAsig = '" + asignatura + "'";
 
+            return dv;
+        }
+
+        public static DataView CargarAsignaturas(string email)
+        {
+            string query = "SELECT GruposClase.codigoasig" +
+                " FROM GruposClase, EstudiantesGrupo" +
+                " WHERE EstudiantesGrupo.Grupo = GruposClase.codigo AND EstudiantesGrupo.email = @email";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@email", email);
+
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+            SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(dataAdapter);
+
+            DataTable dt = new DataTable("tAsignaturas");
+            DataSet ds = new DataSet("sAsignaturas");
+
+            dataAdapter.Fill(ds, "tAsignaturas");
+            dt = ds.Tables["tAsignaturas"];
+
+            DataView dv = new DataView(dt);
+
+            return dv;
         }
     }
 }
