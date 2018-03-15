@@ -96,6 +96,7 @@
     <Content Include="Registro.aspx" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="TareasAlumno.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -139,6 +140,13 @@
     </Compile>
     <Compile Include="Registro.aspx.designer.cs">
       <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TareasAlumno.aspx.cs">
+      <DependentUpon>TareasAlumno.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TareasAlumno.aspx.designer.cs">
+      <DependentUpon>TareasAlumno.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

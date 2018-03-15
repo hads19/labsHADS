@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net.Mail;
 using System.Net;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace register
 {
@@ -221,7 +222,7 @@ namespace login
                     {
                         result = "Este email aun no está confirmado";
                     }
-                    
+
                 }
                 connection.Close();
                 return result;
@@ -367,4 +368,41 @@ namespace cambio
 
     }
 
+}
+namespace tareas
+{
+
+    public static class Tareas
+    {
+        public const string connectionString = "Data Source=tcp:hads19ac.database.windows.net,1433;Initial Catalog = hads19ac; Persist Security Info=True;User ID = hads19; Password=CFB10payaso";
+
+        public static DataView BuscarTareasGenericas(string email)
+        {
+
+                string tareasQuery = "SELECT CodTarea, Descripcion, TareasGenericas.HEstimadas, TipoTarea " +
+                        "FROM EstudiantesTareas INNER JOIN TareasGenericas " +
+                        "ON EstudiantesTareas.CodTarea = TareasGenericas.Codigo " +
+                        "WHERE Email = @email AND Explotacion = 1";
+
+                SqlConnection connection = new SqlConnection(connectionString);
+
+                SqlCommand tareasSql = new SqlCommand(tareasQuery, connection);
+
+                tareasSql.Parameters.AddWithValue("@email", email);
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(tareasSql);
+                SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(dataAdapter);
+
+                DataTable dt = new DataTable("tTareas");
+                DataSet ds = new DataSet("sTareas");
+
+                dataAdapter.Fill(ds, "tTareas");
+                dt = ds.Tables["tTareas"];
+
+                DataView dv = new DataView(dt);
+
+                return dv;
+
+        }
+    }
 }
