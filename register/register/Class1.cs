@@ -381,7 +381,7 @@ namespace tareas
 
             string tareasQuery = "SELECT CodAsig, Codigo, Descripcion, HEstimadas, TipoTarea " +
                     "FROM TareasGenericas " +
-                    "WHERE Explotacion = 1 AND Codigo IN (SELECT CodTarea FROM EstudiantesTareas WHERE Email = @email)";
+                    "WHERE Explotacion = 1 AND Codigo NOT IN (SELECT CodTarea FROM EstudiantesTareas WHERE Email = @email)";
 
             SqlConnection connection = new SqlConnection(connectionString);
 
@@ -427,6 +427,50 @@ namespace tareas
             DataView dv = new DataView(dt);
 
             return dv;
+        }
+
+        public static DataView CargarTareasAlumno(string email)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            String query = "SELECT Email, CodTarea, HEstimadas, HReales " +
+                "FROM EstudiantesTareas " +
+                "WHERE Email = @email";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@email", email);
+
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+            SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
+
+            DataTable dt = new DataTable("tTareas");
+            DataSet ds = new DataSet("sTareas");
+
+            dataAdapter.Fill(ds, "tTareas");
+            dt = ds.Tables["tTareas"];
+
+            return new DataView(dt);
+        }
+
+        public static void InstanciarTarea(string usuario, string tarea, int estimadas, int reales)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            String query = "INSERT INTO EstudianteTareas " +
+                "VALUES (@email, @CodTarea, @HEstimadas, @HReales)";
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.AddWithValue("@email", usuario);
+            command.Parameters.AddWithValue("@CodTarea", tarea);
+            command.Parameters.AddWithValue("@HEstimadas", estimadas);
+            command.Parameters.AddWithValue("@HReales", reales);
+
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+
+            dataAdapter.InsertCommand = command;
+            dataAdapter.InsertCommand.ExecuteNonQuery();
         }
     }
 }

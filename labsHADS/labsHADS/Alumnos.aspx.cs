@@ -11,7 +11,7 @@ namespace labsHADS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Session.Contents["email"] = "jose@ikasle.ehu.es";
         }
     }
 }

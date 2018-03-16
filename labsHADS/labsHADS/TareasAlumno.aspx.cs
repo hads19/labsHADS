@@ -13,10 +13,12 @@ namespace labsHADS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string email = Convert.ToString(Session.Contents["email"]);
+
             if (!Page.IsPostBack)
             {
                 //CARGAR EL DROPDOWNLIST
-                DataView aDV = Tareas.CargarAsignaturas("pepe@ikasle.ehu.es");
+                DataView aDV = Tareas.CargarAsignaturas(email);
 
                 dropAsignaturas.DataSource = aDV;
                 dropAsignaturas.DataTextField = "codigoasig";
@@ -26,7 +28,7 @@ namespace labsHADS
                 dropAsignaturas.SelectedValue = dropAsignaturas.Items[0].Value;
 
                 //CARGAR EL GRINDVIEW SIN FILTROS
-                DataView dv = Tareas.BuscarTareasGenericas("pepe@ikasle.ehu.es", dropAsignaturas.SelectedValue);
+                DataView dv = Tareas.BuscarTareasGenericas(email, dropAsignaturas.SelectedValue);
 
                 gridTareas.DataSource = dv;
                 gridTareas.DataBind();
@@ -38,7 +40,7 @@ namespace labsHADS
             if (Page.IsPostBack)
             {
                 //CARGAR EL GRINDVIEW CON UN FILTRO
-                DataView dv = Tareas.BuscarTareasGenericas("pepe@ikasle.ehu.es", dropAsignaturas.SelectedValue);
+                DataView dv = Tareas.BuscarTareasGenericas(Convert.ToString(Session.Contents["email"]), dropAsignaturas.SelectedValue);
 
                 gridTareas.DataSource = dv;
                 gridTareas.DataBind();

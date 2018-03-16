@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using tareas;
 
 namespace labsHADS
 {
@@ -15,50 +16,23 @@ namespace labsHADS
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //String email = Request.QueryString["email"];
+            //Cargar el grindview
 
-            SqlConnection connection = new SqlConnection(connectionString);
+            DataView dv = Tareas.CargarTareasAlumno(Convert.ToString(Session.Contents["email"]));
 
-            String query = "SELECT Email, CodTarea, HEstimadas, HReales " +
-                "FROM EstudiantesTareas " +
-                "WHERE Email = @email";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@email", /*Session.Contents["email"]*/ "pepe@ikasle.ehu.es");
-
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
-            SqlCommandBuilder commandBuilder = new SqlCommandBuilder(dataAdapter);
-
-            DataTable dt = new DataTable("tTareas");
-            DataSet ds = new DataSet("sTareas");
-
-            dataAdapter.Fill(ds, "tTareas");
-            dt = ds.Tables["tTareas"];
-
-            DataView dv = new DataView(dt);
             gridTareas.DataSource = dv;
             gridTareas.DataBind();
+
+            //Rellenar los campos bloqueados
+
+            usuario.Text = Convert.ToString(Session.Contents["email"]);
+            tarea.Text = Request.QueryString["codigo"];
+            estimadas.Text = Request.QueryString["estimadas"];
         }
 
         protected void crearTarea_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(connectionString);
-
-            String query = "INSERT INTO EstudianteTareas " +
-                "VALUES (@email, @CodTarea, @HEstimadas, @HReales)";
-
-            SqlCommand command = new SqlCommand(query, connection);
-
-            command.Parameters.AddWithValue("@email", usuario.Text);
-            command.Parameters.AddWithValue("@CodTarea", tarea.Text);
-            command.Parameters.AddWithValue("@HEstimadas", Convert.ToInt32(estimadas.Text));
-            command.Parameters.AddWithValue("@HReales", Convert.ToInt32(reales.Text));
-
-            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
-
-            dataAdapter.InsertCommand = command;
-            dataAdapter.InsertCommand.ExecuteNonQuery();
+            Tareas.InstanciarTarea(usuario.Text, tarea.Text, Convert.ToInt32(estimadas.Text), Convert.ToInt32(reales.Text));
         }
     }
 }
