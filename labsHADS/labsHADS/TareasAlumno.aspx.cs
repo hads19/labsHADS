@@ -63,5 +63,11 @@ namespace labsHADS
 
             Response.Redirect("InstanciarTarea.aspx?codigo=" + codigo + "&estimadas=" + estimadas);
         }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("Inicio.aspx");
+        }
     }
 }

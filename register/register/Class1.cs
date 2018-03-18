@@ -201,7 +201,20 @@ namespace login
 
                 if (numRows != null)
                 {
-                    result = "Logeado correctamente. Bienvenido.";
+                    SqlDataReader reader = checkSql.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        string tipo = (string)reader.GetValue(5);
+                        if (tipo.Equals("Profesor"))
+                        {
+                            result = "Profesor";
+                        }
+                        else
+                        {
+                            result = "Alumno";
+                        }
+                    }
                 }
                 else
                 {

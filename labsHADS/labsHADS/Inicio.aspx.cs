@@ -32,8 +32,21 @@ namespace labsHADS
 
         protected void login_Click(object sender, EventArgs e)
         {
-            Label1.Text = Login1.logear(email.Text, password.Text);
-            
+            string tipo = Login1.logear(email.Text, password.Text);
+            Session.Contents.Add("Email", email.Text);
+
+            if (tipo.Equals("Profesor"))
+            {
+                Response.Redirect("Profesor.aspx");
+            }
+            else if (tipo.Equals("Alumno"))
+            {
+                Response.Redirect("Alumno.aspx");
+            }
+            else
+            {
+                Label1.Text = tipo;
+            }
         }
     }
 }
