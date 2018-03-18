@@ -442,7 +442,7 @@ namespace tareas
             return dv;
         }
 
-        public static DataView CargarTareasAlumno(string email)
+        public static DataTable CargarTareasAlumno(string email)
         {
             SqlConnection connection = new SqlConnection(connectionString);
 
@@ -463,14 +463,14 @@ namespace tareas
             dataAdapter.Fill(ds, "tTareas");
             dt = ds.Tables["tTareas"];
 
-            return new DataView(dt);
+            return dt;
         }
 
-        public static void InstanciarTarea(string usuario, string tarea, int estimadas, int reales)
+        public static DataTable InstanciarTarea(string usuario, string tarea, int estimadas, int reales, DataTable currentTable)
         {
             SqlConnection connection = new SqlConnection(connectionString);
 
-            String query = "INSERT INTO EstudianteTareas " +
+            String query = "INSERT INTO EstudiantesTareas " +
                 "VALUES (@email, @CodTarea, @HEstimadas, @HReales)";
 
             SqlCommand command = new SqlCommand(query, connection);
@@ -480,10 +480,21 @@ namespace tareas
             command.Parameters.AddWithValue("@HEstimadas", estimadas);
             command.Parameters.AddWithValue("@HReales", reales);
 
+            DataRow dr = currentTable.NewRow();
+
+            dr["Email"] = usuario;
+            dr["CodTarea"] = tarea;
+            dr["HEstimadas"] = estimadas;
+            dr["HReales"] = reales;
+
+            currentTable.Rows.Add(dr);
+
             SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
 
             dataAdapter.InsertCommand = command;
-            dataAdapter.InsertCommand.ExecuteNonQuery();
+            dataAdapter.Update(currentTable);
+
+            return currentTable;
         }
     }
 }
