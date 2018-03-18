@@ -36,6 +36,7 @@ namespace labsHADS
         {
             currentTable = Tareas.InstanciarTarea(usuario.Text, tarea.Text, Convert.ToInt32(estimadas.Text), Convert.ToInt32(reales.Text), currentTable);
             gridTareas.DataBind();
+            crearTarea.Enabled = false;
         }
     }
 }
