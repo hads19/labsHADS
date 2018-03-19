@@ -19,19 +19,26 @@ namespace labsHADS
             {
                 //CARGAR EL DROPDOWNLIST
                 DataView aDV = Tareas.CargarAsignaturas(email);
-
+                
                 dropAsignaturas.DataSource = aDV;
                 dropAsignaturas.DataTextField = "codigoasig";
                 dropAsignaturas.DataValueField = "codigoasig";
                 dropAsignaturas.DataBind();
 
-                dropAsignaturas.SelectedValue = dropAsignaturas.Items[0].Value;
+                try
+                {
+                    dropAsignaturas.SelectedValue = dropAsignaturas.Items[0].Value;
 
-                //CARGAR EL GRINDVIEW SIN FILTROS
-                DataView dv = Tareas.BuscarTareasGenericas(email, dropAsignaturas.SelectedValue);
+                    //CARGAR EL GRINDVIEW SIN FILTROS
+                    DataView dv = Tareas.BuscarTareasGenericas(email, dropAsignaturas.SelectedValue);
 
-                gridTareas.DataSource = dv;
-                gridTareas.DataBind();
+                    gridTareas.DataSource = dv;
+                    gridTareas.DataBind();
+                }
+                catch(Exception ex)
+                {
+
+                }
             }
         }
 
