@@ -11,10 +11,7 @@
             font-weight: bold;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
         }
-        .auto-style2 {
-            font-family: Verdana, Geneva, Tahoma, sans-serif;
-        }
-    </style>
+        </style>
 </head>
 <body style="height: 532px; width: 708px">
     <form id="form1" runat="server">
@@ -45,6 +42,7 @@
             <asp:Label ID="Label6" runat="server" style="z-index: 1; left: 100px; top: 205px; position: absolute" Text="Horas Estimadas"></asp:Label>
             <asp:TextBox ID="TextBoxHEstimadas" runat="server" style="z-index: 1; left: 220px; top: 205px; position: absolute;"></asp:TextBox>
             <asp:RequiredFieldValidator runat="server" ErrorMessage="*Campo obligatorio" ControlToValidate="TextBoxCodigo" ForeColor="Red" style="z-index: 1; left: 400px; top: 205px; position: absolute"></asp:RequiredFieldValidator>
+            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="TextBoxHEstimadas" ErrorMessage="*Valor Numérico" ForeColor="Red" style="z-index: 1; left: 530px; top: 205px; position: absolute" ValidationExpression="^\d+$"></asp:RegularExpressionValidator>
 
             <asp:Label ID="Label7" runat="server" style="z-index: 1; left: 100px; top: 230px; position: absolute" Text="Tipo Tarea"></asp:Label>
             <asp:TextBox ID="TextBoxTipo" runat="server" style="z-index: 1; left: 220px; top: 230px; position: absolute;"></asp:TextBox>
@@ -60,6 +58,8 @@
                     <asp:ControlParameter ControlID="TextBoxTipo" Name="tipo" PropertyName="Text" />
                 </InsertParameters>
             </asp:SqlDataSource>
+
+            
 
             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/TareasProfesor.aspx" style="z-index: 1; left: 534px; top: 337px; position: absolute">Ver Tareas</asp:HyperLink>
 

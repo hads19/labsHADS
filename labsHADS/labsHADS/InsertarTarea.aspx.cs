@@ -16,8 +16,17 @@ namespace labsHADS
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            SqlDataSource2.Insert();
-            Label8.Text = "Tarea insertada correctamente";
+
+            try
+            {
+                SqlDataSource2.Insert();
+                Label8.Text = "Tarea insertada correctamente";
+                Button1.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                Label8.Text = "Código repetido.";
+            }
         }
     }
 }
