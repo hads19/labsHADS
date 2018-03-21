@@ -79,6 +79,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App_Data\tareas.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\PublishProfiles\labsHADS19 - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
@@ -90,9 +93,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Alumno.aspx" />
+    <Content Include="App_Data\HAS.xml" />
+    <Content Include="App_Data\SEG.xml" />
+    <Content Include="App_Data\XSLTFile.xsl" />
     <Content Include="CambiarPassword.aspx" />
     <Content Include="Confirmar.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="ImportarTareasXMLDocument.aspx" />
     <Content Include="Inicio.aspx" />
     <Content Include="InsertarTarea.aspx" />
     <Content Include="InstanciarTarea.aspx" />
@@ -131,6 +138,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ImportarTareasXMLDocument.aspx.cs">
+      <DependentUpon>ImportarTareasXMLDocument.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImportarTareasXMLDocument.aspx.designer.cs">
+      <DependentUpon>ImportarTareasXMLDocument.aspx</DependentUpon>
     </Compile>
     <Compile Include="Inicio.aspx.cs">
       <DependentUpon>Inicio.aspx</DependentUpon>
