@@ -497,4 +497,52 @@ namespace tareas
             return currentTable;
         }
     }
+
+    public static class IEXml
+    {
+        public const string connectionString = "Data Source=tcp:hads19ac.database.windows.net,1433;Initial Catalog = hads19ac; Persist Security Info=True;User ID = hads19; Password=CFB10payaso";
+
+        public static void Importar(string asignatura)
+        {
+            string query = "SELECT * FROM TareasGenericas";
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand command = new SqlCommand(query, connection);
+
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+
+            DataTable dt = new DataTable("tTareas");
+            DataSet ds = new DataSet("sTareas");
+
+            dataAdapter.Fill(ds, "tTareas");
+            dt = ds.Tables["tTareas"];
+
+
+            string insertQuery = "INSERT INTO TareasGenericas " +
+                "VALUES (@Codigo, @Descripcion, @CodAsig, @HEstimadas, @Explotacion, @TipoTarea)";
+
+            SqlCommand insertCommand = new SqlCommand(insertQuery, connection);
+
+            insertCommand.Parameters.AddWithValue("@Codigo", "Prueba");
+            insertCommand.Parameters.AddWithValue("@Descripcion", "");
+            insertCommand.Parameters.AddWithValue("@CodAsig", asignatura);
+            insertCommand.Parameters.AddWithValue("@HEstimadas", 2);
+            insertCommand.Parameters.AddWithValue("@Explotacion", 1);
+            insertCommand.Parameters.AddWithValue("@TipoTarea", "");
+
+            DataRow dr = dt.NewRow();
+
+            dr["Codigo"] = "Prueba";
+            dr["Descripcion"] = "";
+            dr["CodAsig"] = asignatura;
+            dr["HEstimadas"] = 2;
+            dr["Explotacion"] = 1;
+            dr["TipoTarea"] = "";
+
+            dt.Rows.Add(dr);
+
+            dataAdapter.InsertCommand = insertCommand;
+            dataAdapter.Update(dt);
+        }
+    }
 }
