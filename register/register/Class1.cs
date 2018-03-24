@@ -7,6 +7,7 @@ using System.Net.Mail;
 using System.Net;
 using System.Data.SqlClient;
 using System.Data;
+using System.Xml;
 
 namespace register
 {
@@ -502,8 +503,12 @@ namespace tareas
     {
         public const string connectionString = "Data Source=tcp:hads19ac.database.windows.net,1433;Initial Catalog = hads19ac; Persist Security Info=True;User ID = hads19; Password=CFB10payaso";
 
-        public static void Importar(string asignatura)
+
+        public static string Importar(string asignatura, XmlDocument xml)
         {
+            bool acierto = false;
+            bool fallo = false;
+
             string query = "SELECT * FROM TareasGenericas";
             SqlConnection connection = new SqlConnection(connectionString);
 
@@ -518,31 +523,52 @@ namespace tareas
             dt = ds.Tables["tTareas"];
 
 
-            string insertQuery = "INSERT INTO TareasGenericas " +
-                "VALUES (@Codigo, @Descripcion, @CodAsig, @HEstimadas, @Explotacion, @TipoTarea)";
+            XmlNodeList tareas = xml.GetElementsByTagName("tarea");
+            for (int i = 0; i < tareas.Count; i++)
+            {
 
-            SqlCommand insertCommand = new SqlCommand(insertQuery, connection);
+                string insertQuery = "INSERT INTO TareasGenericas " +
+                    "VALUES (@Codigo, @Descripcion, @CodAsig, @HEstimadas, @Explotacion, @TipoTarea)";
 
-            insertCommand.Parameters.AddWithValue("@Codigo", "Prueba");
-            insertCommand.Parameters.AddWithValue("@Descripcion", "");
-            insertCommand.Parameters.AddWithValue("@CodAsig", asignatura);
-            insertCommand.Parameters.AddWithValue("@HEstimadas", 2);
-            insertCommand.Parameters.AddWithValue("@Explotacion", 1);
-            insertCommand.Parameters.AddWithValue("@TipoTarea", "");
+                SqlCommand insertCommand = new SqlCommand(insertQuery, connection);
 
-            DataRow dr = dt.NewRow();
+                insertCommand.Parameters.AddWithValue("@Codigo", tareas[i].Attributes["codigo"].Value);
+                insertCommand.Parameters.AddWithValue("@Descripcion", tareas[i].ChildNodes[0].InnerText);
+                insertCommand.Parameters.AddWithValue("@CodAsig", asignatura);
+                insertCommand.Parameters.AddWithValue("@HEstimadas", tareas[i].ChildNodes[1].InnerText);
+                insertCommand.Parameters.AddWithValue("@Explotacion", tareas[i].ChildNodes[2].InnerText);
+                insertCommand.Parameters.AddWithValue("@TipoTarea", tareas[i].ChildNodes[3].InnerText);
 
-            dr["Codigo"] = "Prueba";
-            dr["Descripcion"] = "";
-            dr["CodAsig"] = asignatura;
-            dr["HEstimadas"] = 2;
-            dr["Explotacion"] = 1;
-            dr["TipoTarea"] = "";
+                DataRow dr = dt.NewRow();
 
-            dt.Rows.Add(dr);
+                dr["Codigo"] = tareas[i].Attributes["codigo"].Value;
+                dr["Descripcion"] = tareas[i].ChildNodes[0].InnerText;
+                dr["CodAsig"] = asignatura;
+                dr["HEstimadas"] = tareas[i].ChildNodes[1].InnerText;
+                dr["Explotacion"] = tareas[i].ChildNodes[2].InnerText;
+                dr["TipoTarea"] = tareas[i].ChildNodes[3].InnerText;
 
-            dataAdapter.InsertCommand = insertCommand;
-            dataAdapter.Update(dt);
+                dt.Rows.Add(dr);
+
+                dataAdapter.InsertCommand = insertCommand;
+
+
+                try
+                {
+                    dataAdapter.Update(dt);
+                    acierto = true;
+                }
+                catch (Exception)
+                {
+                    fallo = true;
+                }
+
+            }
+            if (fallo && !acierto) return "Ninguna tarea se ha podido insertar porque ya habían sido importadas previamente.";
+            if (fallo && acierto) return "Alguna de las tareas del XML ya estaban importadas. " +
+                         "El resto se han importado correctamente.";
+            return "Todas las tareas importadas con exito.";
+
         }
     }
 }

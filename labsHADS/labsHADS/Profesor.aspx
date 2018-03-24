@@ -34,6 +34,7 @@
         <div style="background-color:lightskyblue; border-style: solid; border-color: inherit; border-width: medium; width:347px; z-index: 1; left: 227px; top: 15px; position: absolute; height: 185px;">
             <asp:Label ID="Label1" runat="server" CssClass="auto-style1" style="z-index: 1; left: 16px; top: 59px; position: absolute; width: 317px; color: #800080" Text="Gestión Web de Tareas-Dedicación"></asp:Label>
             <asp:Label ID="Label2" runat="server" CssClass="auto-style1" style="z-index: 1; left: 120px; top: 107px; position: absolute" Text="Profesores"></asp:Label>
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Inicio.aspx" style="z-index: 1; left: 258px; top: 157px; position: absolute">Cerrar sesión</asp:HyperLink>
         </div>
     </form>
 </body>

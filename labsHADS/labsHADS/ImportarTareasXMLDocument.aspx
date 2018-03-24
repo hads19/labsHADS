@@ -31,7 +31,6 @@
 
             </div>
             <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 39px; top: 128px; position: absolute; font-size: small; font-family: Verdana, Geneva, Tahoma, sans-serif;" Text="Seleccionar Asignatura a Importar"></asp:Label>
-            <asp:Label ID="Label4" runat="server" style="z-index: 1; left: 336px; top: 130px; position: absolute; width: 300px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: small;" Text="Lista de tareas de la asignatura seleccionada"></asp:Label>
             <asp:DropDownList AutoPostBack="true" ID="asignaturasDDL" runat="server" style="z-index: 1; left: 43px; top: 159px; position: absolute; height: 20px; width: 224px" DataSourceID="SqlDataSource2" DataTextField="codigoasig" DataValueField="codigoasig" OnSelectedIndexChanged="asignaturasDDL_SelectedIndexChanged" CssClass="auto-style1">
             </asp:DropDownList>
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:hads19acConnectionString %>" SelectCommand="SELECT GruposClase.codigoasig FROM GruposClase INNER JOIN ProfesoresGrupo ON GruposClase.codigo = ProfesoresGrupo.codigogrupo WHERE (ProfesoresGrupo.email = @email)">
@@ -43,7 +42,9 @@
             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Profesor.aspx" style="z-index: 1; left: 47px; top: 369px; position: absolute; font-size: small; font-family: Verdana, Geneva, Tahoma, sans-serif;">Menu Profesor</asp:HyperLink>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
             
-            <asp:Panel ID="Panel1" runat="server" style="z-index: 1; left: 331px; top: 198px; position: absolute; height: 151px; width: 354px">
+            <asp:Label ID="resultInfoLabel" runat="server" style="z-index: 1; left: 330px; top: 375px; position: absolute; font-size: small; font-family: Verdana, Geneva, Tahoma, sans-serif; height: 47px; width: 358px" Text="Label"></asp:Label>
+            
+            <asp:Panel ID="Panel1" runat="server" style="z-index: 1; left: 331px; top: 135px; position: absolute; height: 186px; width: 354px">
             <asp:Xml ID="Xml1" runat="server"></asp:Xml>
             </asp:Panel>
             <asp:Label ID="errorLabel" runat="server" style="color:red; z-index: 1; left: 337px; top: 258px; position: absolute" CssClass="auto-style1"></asp:Label>

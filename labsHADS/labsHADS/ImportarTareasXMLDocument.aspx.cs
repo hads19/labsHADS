@@ -12,21 +12,26 @@ namespace labsHADS
     public partial class ImportarTareasXMLDocument : System.Web.UI.Page
     {
 
-        XmlDocument xml;
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Xml1.DocumentSource = Server.MapPath("App_Data/" + asignaturasDDL.SelectedValue + ".xml");
-            //Xml1.TransformSource = Server.MapPath("App_Data/XSLTFile.xsl");
+            importarButton.Enabled = false;
 
+
+            if (!IsPostBack)
+            {
+                asignaturasDDL.SelectedIndex = 0;
+                asignaturasDDL_SelectedIndexChanged(asignaturasDDL, null); 
+            }
 
         }
 
         protected void asignaturasDDL_SelectedIndexChanged(object sender, EventArgs e)
         {
+            resultInfoLabel.Text = "";
+
             try
             {
-                xml = new XmlDocument();
+                XmlDocument xml = new XmlDocument();
 
                 xml.Load(Server.MapPath("App_Data/" + asignaturasDDL.SelectedValue + ".xml"));
 
@@ -34,18 +39,27 @@ namespace labsHADS
                 Xml1.TransformSource = Server.MapPath("App_Data/XSLTFile.xsl");
 
                 errorLabel.Text = "";
+                importarButton.Enabled = true;
 
             }
             catch (Exception)
             {
                 errorLabel.Text = "No hay ningun XML que importar para esa tarea";
+                importarButton.Enabled = false;
             }
             
         }
 
         protected void importarButton_Click(object sender, EventArgs e)
         {
-            IEXml.Importar(asignaturasDDL.SelectedValue);
+            XmlDocument xml = new XmlDocument();
+
+            xml.Load(Server.MapPath("App_Data/" + asignaturasDDL.SelectedValue + ".xml"));
+
+            resultInfoLabel.Text = IEXml.Importar(asignaturasDDL.SelectedValue, xml);
+
+            Xml1.DocumentSource = Server.MapPath("App_Data/" + asignaturasDDL.SelectedValue + ".xml");
+            Xml1.TransformSource = Server.MapPath("App_Data/XSLTFile.xsl");
         }
     }
 }

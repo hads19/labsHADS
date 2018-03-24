@@ -18,7 +18,7 @@
 <body>
     <form id="form1" runat="server">
         <div style="border-style: solid; border-color: inherit; border-width: medium; z-index: 1; left: 10px; top: 15px; position: absolute; height: 568px; width: 899px;">
-            <div style="background-color: cornflowerblue; width: 533px; height: 70px; z-index: 1; left: 161px; top: 18px; position: absolute;">
+            <div style="background-color: cornflowerblue; width: 624px; height: 70px; z-index: 1; left: 70px; top: 18px; position: absolute;">
                 <asp:Label ID="label1" runat="server" CssClass="auto-style2" Style="z-index: 1; left: 228px; top: 10px; position: absolute" Text="PROFESOR"></asp:Label>
                 <asp:Label ID="Label2" runat="server" CssClass="auto-style2" Style="z-index: 1; left: 128px; top: 40px; position: absolute" Text="GESTIÓN DE TAREAS GENÉRICAS"></asp:Label>
             </div>
@@ -58,7 +58,7 @@
                 </UpdateParameters>
             </asp:SqlDataSource>
 
-            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" style="z-index: 1; left: 606px; top: 20px; position: absolute">Cerrar Sesión</asp:LinkButton>
+            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" style="z-index: 1; left: 605px; top: 99px; position: absolute">Cerrar Sesión</asp:LinkButton>
 
         </div>
     </form>
