@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="yes"?>
+<tareas xmlns:iso="http://ji.ehu.es/iso">
+  <tarea codigo="a">
+    <descripcion>a</descripcion>
+    <hestimadas>1</hestimadas>
+    <explotacion>false</explotacion>
+    <tipotarea>a</tipotarea>
+  </tarea>
+  <tarea codigo="ISO-Lab1">
+    <descripcion>prueba10</descripcion>
+    <hestimadas>10</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Examen10</tipotarea>
+  </tarea>
+  <tarea codigo="Iter-1">
+    <descripcion>Primera iteracion</descripcion>
+    <hestimadas>4</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Trabajo</tipotarea>
+  </tarea>
+  <tarea codigo="ITER-2">
+    <descripcion>Segunda iteración</descripcion>
+    <hestimadas>22</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Trabajo</tipotarea>
+  </tarea>
+  <tarea codigo="Lab algo">
+    <descripcion>Laboratorio</descripcion>
+    <hestimadas>5</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Laboratorio</tipotarea>
+  </tarea>
+</tareas>

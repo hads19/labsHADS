@@ -419,6 +419,30 @@ namespace tareas
             return dv;
         }
 
+        public static DataTable BuscarTareasGenericasProfesor(string email, string asignatura)
+        {
+
+            string tareasQuery = "SELECT DISTINCT TareasGenericas.Codigo, TareasGenericas.Descripcion, TareasGenericas.HEstimadas, TareasGenericas.Explotacion, TareasGenericas.TipoTarea FROM TareasGenericas INNER JOIN Asignaturas ON Asignaturas.codigo = TareasGenericas.CodAsig INNER JOIN GruposClase ON Asignaturas.codigo = GruposClase.codigoasig INNER JOIN ProfesoresGrupo ON ProfesoresGrupo.codigogrupo = GruposClase.codigo WHERE(ProfesoresGrupo.email = @email) AND(Asignaturas.codigo = @asig)";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            SqlCommand tareasSql = new SqlCommand(tareasQuery, connection);
+
+            tareasSql.Parameters.AddWithValue("@email", email);
+            tareasSql.Parameters.AddWithValue("@asig", asignatura);
+
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(tareasSql);
+            SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(dataAdapter);
+
+            DataTable dt = new DataTable("tTareas");
+            DataSet ds = new DataSet("sTareas");
+
+            dataAdapter.Fill(ds, "tTareas");
+            dt = ds.Tables["tTareas"];
+
+            return dt;
+        }
+
         public static DataView CargarAsignaturas(string email)
         {
             string query = "SELECT GruposClase.codigoasig" +
@@ -442,6 +466,30 @@ namespace tareas
 
             return dv;
         }
+
+        public static DataView CargarAsignaturasProfesor(string email)
+        {
+            string query = "SELECT GruposClase.codigoasig FROM GruposClase, ProfesoresGrupo WHERE GruposClase.codigo = ProfesoresGrupo.codigogrupo AND ProfesoresGrupo.email = @email";
+
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@email", email);
+
+            SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+            SqlCommandBuilder sqlCommandBuilder = new SqlCommandBuilder(dataAdapter);
+
+            DataTable dt = new DataTable("tAsignaturas");
+            DataSet ds = new DataSet("sAsignaturas");
+
+            dataAdapter.Fill(ds, "tAsignaturas");
+            dt = ds.Tables["tAsignaturas"];
+
+            DataView dv = new DataView(dt);
+
+            return dv;
+        }
+
 
         public static DataTable CargarTareasAlumno(string email)
         {

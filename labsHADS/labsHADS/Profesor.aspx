@@ -26,7 +26,7 @@
             <asp:HyperLink ID="Tareas" runat="server" style="z-index: 1; left: 20px; top: 35px; position: absolute" Text="Tareas" CssClass="auto-style2" NavigateUrl="~/TareasProfesor.aspx"></asp:HyperLink>
             <asp:HyperLink ID="Grupos" runat="server" style="z-index: 1; left: 20px; top: 60px; position: absolute" Text="Grupos" CssClass="auto-style2"></asp:HyperLink>
             <asp:HyperLink ID="ImpXML" runat="server" style="z-index: 1; left: 20px; top: 85px; position: absolute" Text="Importar v. XMLDocument" CssClass="auto-style2" NavigateUrl="~/ImportarTareasXMLDocument.aspx"></asp:HyperLink>
-            <asp:HyperLink ID="Exp" runat="server" style="z-index: 1; left: 20px; top: 110px; position: absolute" Text="Exportar" CssClass="auto-style2"></asp:HyperLink>
+            <asp:HyperLink ID="Exp" runat="server" style="z-index: 1; left: 20px; top: 110px; position: absolute" Text="Exportar" CssClass="auto-style2" NavigateUrl="~/ExportarTareas.aspx"></asp:HyperLink>
             <asp:HyperLink ID="ImpDataSet" runat="server" style="z-index: 1; left: 20px; top: 135px; position: absolute" Text="Importar v. DataSet" CssClass="auto-style2"></asp:HyperLink>
             <asp:HyperLink ID="VerEstadisticas" runat="server" style="z-index: 1; left: 20px; top: 160px; position: absolute" Text="Ver Estadísticas" CssClass="auto-style2" NavigateUrl="~/VerEstadisticas.aspx"></asp:HyperLink>
 
