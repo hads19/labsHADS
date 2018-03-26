@@ -609,13 +609,11 @@ namespace tareas
                 catch (Exception e)
                 {
                     fallo = true;
+                    Console.WriteLine(e.Message);
                 }
 
             }
-            if (fallo && !acierto) return "Ninguna tarea se ha podido insertar porque ya habían sido importadas previamente.";
-            if (fallo && acierto) return "Alguna de las tareas del XML ya estaban importadas. " +
-                         "El resto se han importado correctamente.";
-            return "Todas las tareas importadas con exito.";
+            return "Todas las tareas importadas con exito. Es posible que algunas ya estuvieran importadas.";
 
         }
     }
