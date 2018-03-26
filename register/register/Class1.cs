@@ -606,7 +606,7 @@ namespace tareas
                     dataAdapter.Update(dt);
                     acierto = true;
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     fallo = true;
                 }

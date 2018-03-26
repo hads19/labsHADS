@@ -20,7 +20,10 @@ namespace labsHADS
             if (!IsPostBack)
             {
                 asignaturasDDL.SelectedIndex = 0;
-                asignaturasDDL_SelectedIndexChanged(asignaturasDDL, null); 
+                asignaturasDDL_SelectedIndexChanged(asignaturasDDL, null);
+
+                ordenDDL.SelectedIndex = 0;
+                DropDownList1_SelectedIndexChanged(ordenDDL, null);
             }
 
         }
@@ -44,10 +47,16 @@ namespace labsHADS
             }
             catch (Exception)
             {
-                errorLabel.Text = "No hay ningun XML que importar para esa tarea";
-                importarButton.Enabled = false;
+
+                if (IsPostBack)
+                {
+                    errorLabel.Text = "No hay ningun XML que importar para esa tarea";
+                    importarButton.Enabled = false;
+                }
             }
-            
+
+            ordenDDL.SelectedIndex = 0;
+            DropDownList1_SelectedIndexChanged(ordenDDL, null);
         }
 
         protected void importarButton_Click(object sender, EventArgs e)
@@ -60,6 +69,46 @@ namespace labsHADS
 
             Xml1.DocumentSource = Server.MapPath("App_Data/" + asignaturasDDL.SelectedValue + ".xml");
             Xml1.TransformSource = Server.MapPath("App_Data/XSLTFile.xsl");
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string xsltOrden = "XSLTFile";
+
+            switch (ordenDDL.SelectedValue)
+            {
+                case "codigo":
+                    xsltOrden = "XSLTFileCodigo";
+                    break;
+                case "descripcion":
+                    xsltOrden = "XSLTFileDescripcion";
+                    break;
+                case "HEstimadas":
+                    xsltOrden = "XSLTFileHEstimadas";
+                    break;
+            }
+
+            try
+            {
+                XmlDocument xml = new XmlDocument();
+
+                xml.Load(Server.MapPath("App_Data/" + asignaturasDDL.SelectedValue + ".xml"));
+
+                Xml1.DocumentSource = Server.MapPath("App_Data/" + asignaturasDDL.SelectedValue + ".xml");
+                Xml1.TransformSource = Server.MapPath("App_Data/" + xsltOrden + ".xsl");
+
+                errorLabel.Text = "";
+                importarButton.Enabled = true;
+
+            }
+            catch (Exception)
+            {
+                if (IsPostBack)
+                {
+                    errorLabel.Text = "No hay ningun XML que importar para esa tarea";
+                    importarButton.Enabled = false;
+                }
+            }
         }
     }
 }

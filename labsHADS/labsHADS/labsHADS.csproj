@@ -95,6 +95,9 @@
     <Content Include="Alumno.aspx" />
     <Content Include="App_Data\HAS.xml" />
     <Content Include="App_Data\SEG.xml" />
+    <Content Include="App_Data\XSLTFileCodigo.xsl" />
+    <Content Include="App_Data\XSLTFileDescripcion.xsl" />
+    <Content Include="App_Data\XSLTFileHEstimadas.xsl" />
     <Content Include="App_Data\XSLTFile.xsl" />
     <Content Include="CambiarPassword.aspx" />
     <Content Include="Confirmar.aspx" />

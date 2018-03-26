@@ -11,20 +11,23 @@
             left: 10px;
             top: 15px;
             position: absolute;
-            height: 459px;
+            height: 521px;
             width: 753px;
-            right: 55px;
+            right: 510px;
         }
 
         .auto-style1 {
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             font-size: small;
         }
+        .auto-style2 {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div style="z-index: 1; left: 0px; top: 0px; position: absolute; height: 462px; width: 756px; border: solid;">
+        <div style="border-style: solid; border-color: inherit; border-width: medium; z-index: 1; left: 0px; top: 0px; position: absolute; height: 519px; width: 756px; ">
             <div style="z-index: 1; left: 91px; top: 27px; position: absolute; height: 72px; width: 574px; background-color: aqua">
 
                 <asp:Label ID="Label1" runat="server" Style="z-index: 1; left: 186px; top: 40px; position: absolute; font-size: medium; font-family: Verdana, Geneva, Tahoma, sans-serif; height: 18px; right: 154px" Text="Importar Tareas Genérias"></asp:Label>
@@ -40,16 +43,23 @@
                 </SelectParameters>
             </asp:SqlDataSource>
             <asp:Button ID="importarButton" runat="server" Style="z-index: 1; left: 48px; top: 245px; position: absolute; height: 29px; width: 155px; right: 445px" Text="Importar (XMLD)" CssClass="auto-style1" OnClick="importarButton_Click" />
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Profesor.aspx" Style="z-index: 1; left: 47px; top: 369px; position: absolute; font-size: small; font-family: Verdana, Geneva, Tahoma, sans-serif;">Menu Profesor</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Profesor.aspx" Style="z-index: 1; left: 47px; top: 369px; position: absolute; font-size: medium; font-family: Verdana, Geneva, Tahoma, sans-serif;">Menu Profesor</asp:HyperLink>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
 
-            <asp:Label ID="resultInfoLabel" runat="server" Style="z-index: 1; left: 330px; top: 389px; position: absolute; font-size: small; font-family: Verdana, Geneva, Tahoma, sans-serif; height: 47px; width: 358px" Text="Label"></asp:Label>
-            <div style="z-index: 1; left: 305px; top: 135px; position: absolute; height: 234px; width: 425px; overflow:scroll">
+            <asp:Label ID="Label4" runat="server" CssClass="auto-style2" style="z-index: 1; left: 347px; top: 142px; position: absolute; font-size: small; right: 305px" Text="Ordenar Por:"></asp:Label>
+
+            <asp:Label ID="resultInfoLabel" runat="server" Style="z-index: 1; left: 330px; top: 443px; position: absolute; font-size: small; font-family: Verdana, Geneva, Tahoma, sans-serif; height: 47px; width: 358px" Text="Label"></asp:Label>
+            <div style="z-index: 1; left: 305px; top: 191px; position: absolute; height: 234px; width: 425px; overflow:scroll">
                 <asp:Panel ID="Panel1" runat="server" Height="188px" Width="395px">
                     <asp:Xml ID="Xml1" runat="server"></asp:Xml>
                     <asp:Label ID="errorLabel" runat="server" CssClass="auto-style1" Style="color: red; z-index: 1; left: 159px; top: 109px; position: absolute"></asp:Label>
                 </asp:Panel>
             </div>
+            <asp:DropDownList AutoPostBack="true" ID="ordenDDL" runat="server" CssClass="auto-style2" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged" style="z-index: 1; left: 471px; top: 137px; position: absolute">
+                <asp:ListItem Value="codigo">Código</asp:ListItem>
+                <asp:ListItem Value="descripcion">Descripción</asp:ListItem>
+                <asp:ListItem Value="HEstimadas">Horas estimadas</asp:ListItem>
+            </asp:DropDownList>
         </div>
     </form>
 </body>

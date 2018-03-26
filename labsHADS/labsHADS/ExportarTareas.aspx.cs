@@ -16,6 +16,8 @@ namespace labsHADS
         protected void Page_Load(object sender, EventArgs e)
         {
             string email = Convert.ToString(Session.Contents["Email"]);
+            Label4.Visible = false;
+            Label5.Visible = false;
 
             if (!Page.IsPostBack)
             {
@@ -91,6 +93,8 @@ namespace labsHADS
             tareas.Attributes.Append(at);
             xd.Save(Server.MapPath("App_Data/" + dropAsignaturas.SelectedValue + ".xml"));
             Label5.Text = dropAsignaturas.SelectedValue + ".xml";
+            Label4.Visible = true;
+            Label5.Visible = true;
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)

@@ -35,7 +35,7 @@ namespace labsHADS
                     gridTareas.DataSource = dv;
                     gridTareas.DataBind();
                 }
-                catch(Exception ex)
+                catch(Exception)
                 {
 
                 }
