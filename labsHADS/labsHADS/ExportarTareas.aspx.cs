@@ -7,11 +7,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using tareas;
 using System.Xml;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace labsHADS
 {
     public partial class ExportarTareas : System.Web.UI.Page
     {
+        DataTable currentTable;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,12 +40,17 @@ namespace labsHADS
                     DataTable dt = Tareas.BuscarTareasGenericasProfesor(Convert.ToString(Session.Contents["Email"]), dropAsignaturas.SelectedValue);
                     gridTareas.DataSource = dt;
                     gridTareas.DataBind();
+                    currentTable = dt;
+                    Session.Contents.Add("currentTable", currentTable);
                 }
                 catch(Exception ex)
                 {
 
                 }
-            }   
+            } else
+            {
+                currentTable = (DataTable) Session.Contents["currentTable"];
+            }
         }
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
@@ -101,6 +109,29 @@ namespace labsHADS
         {
             Session.Abandon();
             Response.Redirect("Inicio.aspx");
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            List<Dictionary<String, String>> salidaJSON = new List<Dictionary<string, string>>();
+
+            foreach(DataRow fila in currentTable.Rows)
+            {
+                Dictionary<String, String> objetos = new Dictionary<string, string>();
+                objetos.Add("codigo", fila["Codigo"] as String);
+                objetos.Add("descripcion", fila["Descripcion"] as String);
+                objetos.Add("hestimadas", Convert.ToInt32(fila["HEstimadas"]).ToString());
+                objetos.Add("explotacion", Convert.ToString(Convert.ToBoolean(fila["Explotacion"])));
+                objetos.Add("tipotarea", fila["TipoTarea"] as String);
+
+                salidaJSON.Add(objetos);
+            }
+
+            String salida = JsonConvert.SerializeObject(salidaJSON, Newtonsoft.Json.Formatting.Indented);
+            File.WriteAllText(Server.MapPath("App_Data/" + dropAsignaturas.SelectedValue + ".json"), salida);
+            Label5.Text = dropAsignaturas.SelectedValue + ".json";
+            Label4.Visible = true;
+            Label5.Visible = true;
         }
     }
 }

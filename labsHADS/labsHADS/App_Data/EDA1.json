@@ -1,0 +1,37 @@
+[
+  {
+    "codigo": "EDA07-Ej1",
+    "descripcion": "Ejercicio sobre listas ligadas, si",
+    "hestimadas": "3",
+    "explotacion": "True",
+    "tipotarea": "Ejercicio"
+  },
+  {
+    "codigo": "EDA13",
+    "descripcion": "examen",
+    "hestimadas": "12",
+    "explotacion": "True",
+    "tipotarea": "Examen"
+  },
+  {
+    "codigo": "EX-123",
+    "descripcion": "examen",
+    "hestimadas": "3",
+    "explotacion": "True",
+    "tipotarea": "Examen"
+  },
+  {
+    "codigo": "Lab Backtracking",
+    "descripcion": "Un buen labo",
+    "hestimadas": "15",
+    "explotacion": "True",
+    "tipotarea": "Laboratorio"
+  },
+  {
+    "codigo": "lab.237-reinas",
+    "descripcion": "un lab, si, eso es",
+    "hestimadas": "8",
+    "explotacion": "True",
+    "tipotarea": "Laboratorio"
+  }
+]
