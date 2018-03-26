@@ -1,15 +1,81 @@
-<?xml version="1.0" standalone="yes" ?>
-<tareas  xmlns:has="http://ji.ehu.es/has">
-  <tarea codigo= "HAS18-Test1">
+<?xml version="1.0" standalone="yes"?>
+<tareas xmlns:has="http://ji.ehu.es/has">
+  <tarea codigo="GIS-Lab4">
+    <descripcion>ddfdfdf</descripcion>
+    <hestimadas>6</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Laboratorio</tipotarea>
+  </tarea>
+  <tarea codigo="HAS08-Lab10">
+    <descripcion>aaaa</descripcion>
+    <hestimadas>10</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Laboratorio</tipotarea>
+  </tarea>
+  <tarea codigo="HAS08-Lab12">
+    <descripcion>Laboratorio 12 de la asignatura</descripcion>
+    <hestimadas>12</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Laboratorio</tipotarea>
+  </tarea>
+  <tarea codigo="HAS08-Test5">
     <descripcion>Test 5 de la asignatura</descripcion>
-    <hestimadas>1</hestimadas>
+    <hestimadas>3</hestimadas>
     <explotacion>false</explotacion>
-    <tipotarea>Examen</tipotarea>
+    <tipotarea>examen</tipotarea>
+  </tarea>
+  <tarea codigo="HAS11-LAB4">
+    <descripcion>lalalalal</descripcion>
+    <hestimadas>20</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Laboratorio</tipotarea>
+  </tarea>
+  <tarea codigo="HAS18-Lab15">
+    <descripcion>Laboratorio 15</descripcion>
+    <hestimadas>9</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Laboratorio</tipotarea>
   </tarea>
   <tarea codigo="HAS18-Lab4">
     <descripcion>Laboratorio 12</descripcion>
     <hestimadas>12</hestimadas>
     <explotacion>true</explotacion>
     <tipotarea>Laboratorio</tipotarea>
+  </tarea>
+  <tarea codigo="HAS18-Test1">
+    <descripcion>Test 5 de la asignatura</descripcion>
+    <hestimadas>1</hestimadas>
+    <explotacion>false</explotacion>
+    <tipotarea>Examen</tipotarea>
+  </tarea>
+  <tarea codigo="Lab4">
+    <descripcion>lelelelelelelel</descripcion>
+    <hestimadas>12</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Laboratorio</tipotarea>
+  </tarea>
+  <tarea codigo="Lab6-XML">
+    <descripcion>Laboratorio 6 de XML</descripcion>
+    <hestimadas>7</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Laboratorio</tipotarea>
+  </tarea>
+  <tarea codigo="Prueba">
+    <descripcion />
+    <hestimadas>2</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea />
+  </tarea>
+  <tarea codigo="Prueba18">
+    <descripcion>Prueba</descripcion>
+    <hestimadas>10</hestimadas>
+    <explotacion>true</explotacion>
+    <tipotarea>Lab</tipotarea>
+  </tarea>
+  <tarea codigo="Test1">
+    <descripcion>10 preguntas ....</descripcion>
+    <hestimadas>1</hestimadas>
+    <explotacion>false</explotacion>
+    <tipotarea>Examen</tipotarea>
   </tarea>
 </tareas>
