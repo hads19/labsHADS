@@ -83,10 +83,10 @@ namespace labsHADS
 
             XmlNode tareas = xd.DocumentElement;
 
-            XmlAttribute at = xd.CreateAttribute("xmlns:"+ dropAsignaturas.SelectedValue.ToLower());
+            XmlAttribute at = xd.CreateAttribute("xmlns:has");
 
             XmlText xt;
-            xt = xd.CreateTextNode("http://ji.ehu.es/"+ dropAsignaturas.SelectedValue.ToLower());
+            xt = xd.CreateTextNode("http://ji.ehu.es/has");
             at.AppendChild(xt);
             tareas.Attributes.Append(at);
             xd.Save(Server.MapPath("App_Data/" + dropAsignaturas.SelectedValue + ".xml"));

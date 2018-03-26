@@ -48,7 +48,7 @@
                 </Columns>
             </asp:GridView>
 
-            <asp:Button ID="Button1" runat="server" Height="50px" OnClick="Button1_Click" style="z-index: 1; left: 23px; top: 202px; position: absolute; width: 125px" Text="EXTRAER XML" />
+            <asp:Button ID="Button1" runat="server" Height="50px" OnClick="Button1_Click" style="z-index: 1; left: 23px; top: 202px; position: absolute; width: 125px" Text="EXPORTAR XML" />
             <asp:Label ID="Label4" runat="server" style="z-index: 1; left: 24px; top: 377px; position: absolute" Text="TAREAS EXPORTADAS EN FICHERO:"></asp:Label>
             <asp:Label ID="Label5" runat="server" style="z-index: 1; left: 26px; top: 396px; position: absolute; width: 83px"></asp:Label>
 
