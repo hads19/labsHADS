@@ -36,18 +36,6 @@
     <explotacion>true</explotacion>
     <tipotarea>Laboratorio</tipotarea>
   </tarea>
-  <tarea codigo="HAS18-Lab4">
-    <descripcion>Laboratorio 12</descripcion>
-    <hestimadas>12</hestimadas>
-    <explotacion>true</explotacion>
-    <tipotarea>Laboratorio</tipotarea>
-  </tarea>
-  <tarea codigo="HAS18-Test1">
-    <descripcion>Test 5 de la asignatura</descripcion>
-    <hestimadas>1</hestimadas>
-    <explotacion>false</explotacion>
-    <tipotarea>Examen</tipotarea>
-  </tarea>
   <tarea codigo="Lab4">
     <descripcion>lelelelelelelel</descripcion>
     <hestimadas>12</hestimadas>

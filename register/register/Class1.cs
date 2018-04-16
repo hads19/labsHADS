@@ -8,6 +8,7 @@ using System.Net;
 using System.Data.SqlClient;
 using System.Data;
 using System.Xml;
+using System.Security.Cryptography;
 
 namespace register
 {
@@ -95,6 +96,12 @@ namespace register
                     "VALUES(@email, @nombre, @apellidos, @numconfir, @confirmado, @tipo, @pass)";
 
                 SqlCommand insertSql = new SqlCommand(insertQuery, connection);
+
+                //Encriptar la contraseña
+                MD5 mD5 = MD5.Create();
+                byte[] cryptoPass = System.Text.Encoding.ASCII.GetBytes(pass);
+                cryptoPass = mD5.ComputeHash(cryptoPass);
+                pass = System.Text.Encoding.ASCII.GetString(cryptoPass);
 
                 insertSql.Parameters.AddWithValue("@email", email);
                 insertSql.Parameters.AddWithValue("@nombre", nombre);
@@ -194,9 +201,14 @@ namespace login
 
                 SqlCommand checkSql = new SqlCommand(checkQuery, connection);
 
+                //Encriptar la contraseña
+                MD5 mD5 = MD5.Create();
+                byte[] cryptoPass = System.Text.Encoding.ASCII.GetBytes(pass);
+                cryptoPass = mD5.ComputeHash(cryptoPass);
+                pass = System.Text.Encoding.ASCII.GetString(cryptoPass);
+
                 checkSql.Parameters.AddWithValue("@email", email);
                 checkSql.Parameters.AddWithValue("@pass", pass);
-
 
                 var numRows = checkSql.ExecuteScalar();
 
