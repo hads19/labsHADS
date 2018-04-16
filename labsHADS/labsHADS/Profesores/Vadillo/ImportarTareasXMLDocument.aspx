@@ -43,10 +43,12 @@
                 </SelectParameters>
             </asp:SqlDataSource>
             <asp:Button ID="importarButton" runat="server" Style="z-index: 1; left: 48px; top: 245px; position: absolute; height: 29px; width: 155px; right: 445px" Text="Importar (XMLD)" CssClass="auto-style1" OnClick="importarButton_Click" />
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Profesor.aspx" Style="z-index: 1; left: 47px; top: 369px; position: absolute; font-size: medium; font-family: Verdana, Geneva, Tahoma, sans-serif;">Menu Profesor</asp:HyperLink>
+        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" style="z-index: 1; left: 524px; top: 67px; position: absolute; width: 139px">Cerrar Sesión</asp:LinkButton>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
 
             <asp:Label ID="Label4" runat="server" CssClass="auto-style2" style="z-index: 1; left: 347px; top: 142px; position: absolute; font-size: small; right: 305px" Text="Ordenar Por:"></asp:Label>
+
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Profesores/Profesor.aspx" style="z-index: 1; left: 34px; top: 385px; position: absolute">Volver al menu</asp:HyperLink>
 
             <asp:Label ID="resultInfoLabel" runat="server" Style="z-index: 1; left: 330px; top: 443px; position: absolute; font-size: small; font-family: Verdana, Geneva, Tahoma, sans-serif; height: 47px; width: 358px" Text="Label"></asp:Label>
             <div style="z-index: 1; left: 305px; top: 191px; position: absolute; height: 234px; width: 425px; overflow:scroll">

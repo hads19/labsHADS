@@ -47,7 +47,7 @@
                 </Columns>
                 
             </asp:GridView>
-            <asp:HyperLink ID="HyperLink1" runat="server" style="z-index: 1; left: 46px; top: 412px; position: absolute; margin-bottom: 4px" CssClass="auto-style2" NavigateUrl="~/TareasAlumno.aspx">Página anterior</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink1" runat="server" style="z-index: 1; left: 46px; top: 412px; position: absolute; margin-bottom: 4px" CssClass="auto-style2" NavigateUrl="~/Alumnos/TareasAlumno.aspx">Página anterior</asp:HyperLink>
         </div>
     </form>
 </body>

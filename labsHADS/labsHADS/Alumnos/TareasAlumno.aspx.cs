@@ -74,7 +74,8 @@ namespace labsHADS
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("Inicio.aspx");
+            System.Web.Security.FormsAuthentication.SignOut();
+            Response.Redirect("../Inicio.aspx");
         }
     }
 }

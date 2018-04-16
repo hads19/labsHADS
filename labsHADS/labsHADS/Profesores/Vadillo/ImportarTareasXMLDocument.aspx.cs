@@ -36,10 +36,10 @@ namespace labsHADS
             {
                 XmlDocument xml = new XmlDocument();
 
-                xml.Load(Server.MapPath("App_Data/" + asignaturasDDL.SelectedValue + ".xml"));
+                xml.Load(Server.MapPath("~/App_Data/" + asignaturasDDL.SelectedValue + ".xml"));
 
-                Xml1.DocumentSource = Server.MapPath("App_Data/" + asignaturasDDL.SelectedValue + ".xml");
-                Xml1.TransformSource = Server.MapPath("App_Data/XSLTFile.xsl");
+                Xml1.DocumentSource = Server.MapPath("~/App_Data/" + asignaturasDDL.SelectedValue + ".xml");
+                Xml1.TransformSource = Server.MapPath("~/App_Data/XSLTFile.xsl");
 
                 errorLabel.Text = "";
                 importarButton.Enabled = true;
@@ -63,13 +63,21 @@ namespace labsHADS
         {
             XmlDocument xml = new XmlDocument();
 
-            xml.Load(Server.MapPath("App_Data/" + asignaturasDDL.SelectedValue + ".xml"));
+            xml.Load(Server.MapPath("~/App_Data/" + asignaturasDDL.SelectedValue + ".xml"));
 
             resultInfoLabel.Text = IEXml.Importar(asignaturasDDL.SelectedValue, xml);
 
-            Xml1.DocumentSource = Server.MapPath("App_Data/" + asignaturasDDL.SelectedValue + ".xml");
-            Xml1.TransformSource = Server.MapPath("App_Data/XSLTFile.xsl");
+            Xml1.DocumentSource = Server.MapPath("~/App_Data/" + asignaturasDDL.SelectedValue + ".xml");
+            Xml1.TransformSource = Server.MapPath("~/App_Data/XSLTFile.xsl");
         }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            System.Web.Security.FormsAuthentication.SignOut();
+            Response.Redirect("~/Inicio.aspx");
+        }
+
 
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -92,10 +100,10 @@ namespace labsHADS
             {
                 XmlDocument xml = new XmlDocument();
 
-                xml.Load(Server.MapPath("App_Data/" + asignaturasDDL.SelectedValue + ".xml"));
+                xml.Load(Server.MapPath("~/App_Data/" + asignaturasDDL.SelectedValue + ".xml"));
 
-                Xml1.DocumentSource = Server.MapPath("App_Data/" + asignaturasDDL.SelectedValue + ".xml");
-                Xml1.TransformSource = Server.MapPath("App_Data/" + xsltOrden + ".xsl");
+                Xml1.DocumentSource = Server.MapPath("~/App_Data/" + asignaturasDDL.SelectedValue + ".xml");
+                Xml1.TransformSource = Server.MapPath("~/App_Data/" + xsltOrden + ".xsl");
 
                 errorLabel.Text = "";
                 importarButton.Enabled = true;

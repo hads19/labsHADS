@@ -26,7 +26,7 @@
                     <asp:ControlParameter ControlID="DropDownList1" Name="CodAsig" PropertyName="SelectedValue" Type="String" DefaultValue="EDA1" />
                 </SelectParameters>
             </asp:SqlDataSource>
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Profesor.aspx" style="z-index: 1; left: 509px; top: 164px; position: absolute; font-family: Verdana, Geneva, Tahoma, sans-serif">Volver al menú</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Profesores/Profesor.aspx" style="z-index: 1; left: 509px; top: 164px; position: absolute; font-family: Verdana, Geneva, Tahoma, sans-serif">Volver al menu</asp:HyperLink>
             <asp:DropDownList AutoPostBack="true" ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="CodAsig" DataValueField="CodAsig" Style="z-index: 1; left: 27px; top: 174px; position: absolute; font-family: Verdana, Geneva, Tahoma, sans-serif;" OnLoad="DropDownList1_Load" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
             </asp:DropDownList>
             <div style=" background-color:aquamarine; width: 649px; height: 61px; z-index: 1; left: 22px; top: 33px; position: absolute; margin-bottom: 0px;">
@@ -36,6 +36,7 @@
 
         </div>
             <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:hads19acConnectionString %>" SelectCommand="SELECT DISTINCT [CodAsig] FROM [TareasGenericas]"></asp:SqlDataSource>
+        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" style="z-index: 1; left: 545px; top: 80px; position: absolute; width: 139px">Cerrar Sesión</asp:LinkButton>
     </form>
 </body>
 </html>

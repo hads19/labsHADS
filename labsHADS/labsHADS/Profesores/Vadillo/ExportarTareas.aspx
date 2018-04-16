@@ -55,9 +55,9 @@
 
             <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" style="z-index: 1; left: 680px; top: 88px; position: absolute" CssClass="auto-style1">Cerrar Sesión</asp:LinkButton>
 
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Profesor.aspx" style="z-index: 1; left: 677px; top: 488px; position: absolute; width: 101px" CssClass="auto-style1">Menu Profesor</asp:HyperLink>
-
             <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" style="z-index: 1; left: 166px; top: 249px; position: absolute; height: 50px; width: 125px" Text="EXPORTAR JSON" />
+
+            <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Profesores/Profesor.aspx" style="z-index: 1; left: 82px; top: 84px; position: absolute">Volver al menu</asp:HyperLink>
 
         </div>
     </form>

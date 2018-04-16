@@ -58,7 +58,9 @@
                 </UpdateParameters>
             </asp:SqlDataSource>
 
-            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" style="z-index: 1; left: 605px; top: 99px; position: absolute">Cerrar Sesión</asp:LinkButton>
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Profesores/Profesor.aspx" style="z-index: 1; left: 617px; top: 141px; position: absolute">Volver al menu</asp:HyperLink>
+
+            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" style="z-index: 1; left: 617px; top: 111px; position: absolute">Cerrar Sesión</asp:LinkButton>
 
         </div>
     </form>

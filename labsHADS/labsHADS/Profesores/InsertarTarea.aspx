@@ -61,7 +61,7 @@
 
             
 
-            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/TareasProfesor.aspx" style="z-index: 1; left: 534px; top: 337px; position: absolute">Ver Tareas</asp:HyperLink>
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Profesores/TareasProfesor.aspx" style="z-index: 1; left: 534px; top: 337px; position: absolute">Ver Tareas</asp:HyperLink>
 
             <asp:Label ID="Label8" runat="server" style="z-index: 1; left: 103px; top: 405px; position: absolute; width: 197px"></asp:Label>
 

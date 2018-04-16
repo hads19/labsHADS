@@ -38,12 +38,21 @@ namespace labsHADS
             if (tipo.Equals("Profesor"))
             {
                 Session.Contents.Add("Email", email.Text);
-                Response.Redirect("Profesor.aspx");
+                if (email.Text == "vadillo@ehu.es")
+                {
+                    System.Web.Security.FormsAuthentication.SetAuthCookie("vadillo", false);
+                }
+                else
+                {
+                    System.Web.Security.FormsAuthentication.SetAuthCookie("profesor", false);
+                }
+                Response.Redirect("Profesores/Profesor.aspx");
             }
             else if (tipo.Equals("Alumno"))
             {
                 Session.Contents.Add("email", email.Text);
-                Response.Redirect("Alumno.aspx");
+                System.Web.Security.FormsAuthentication.SetAuthCookie("alumno", false);
+                Response.Redirect("Alumnos/Alumno.aspx");
             }
             else
             {

@@ -53,6 +53,7 @@
                     </asp:BoundField>
                 </Columns>
             </asp:GridView>
+            <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Alumnos/Alumno.aspx" style="z-index: 1; left: 16px; top: 24px; position: absolute">Volver al menu</asp:HyperLink>
         </div>
     </form>
 </body>

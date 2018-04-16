@@ -86,10 +86,10 @@ namespace labsHADS
             dt.Columns[3].ColumnName = "explotacion";
             dt.Columns[4].ColumnName = "tipotarea";
 
-            dt.WriteXml(Server.MapPath("App_Data/" + dropAsignaturas.SelectedValue + ".xml"));
+            dt.WriteXml(Server.MapPath("~/App_Data/" + dropAsignaturas.SelectedValue + ".xml"));
 
             XmlDocument xd = new XmlDocument();
-            xd.Load(Server.MapPath("App_Data/" + dropAsignaturas.SelectedValue + ".xml"));
+            xd.Load(Server.MapPath("~/App_Data/" + dropAsignaturas.SelectedValue + ".xml"));
 
             XmlNode tareas = xd.DocumentElement;
 
@@ -99,7 +99,7 @@ namespace labsHADS
             xt = xd.CreateTextNode("http://ji.ehu.es/has");
             at.AppendChild(xt);
             tareas.Attributes.Append(at);
-            xd.Save(Server.MapPath("App_Data/" + dropAsignaturas.SelectedValue + ".xml"));
+            xd.Save(Server.MapPath("~/App_Data/" + dropAsignaturas.SelectedValue + ".xml"));
             Label5.Text = dropAsignaturas.SelectedValue + ".xml";
             Label4.Visible = true;
             Label5.Visible = true;
@@ -108,7 +108,8 @@ namespace labsHADS
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("Inicio.aspx");
+            System.Web.Security.FormsAuthentication.SignOut();
+            Response.Redirect("~/Inicio.aspx");
         }
 
         protected void Button2_Click(object sender, EventArgs e)
@@ -128,7 +129,7 @@ namespace labsHADS
             }
 
             String salida = JsonConvert.SerializeObject(salidaJSON, Newtonsoft.Json.Formatting.Indented);
-            File.WriteAllText(Server.MapPath("App_Data/" + dropAsignaturas.SelectedValue + ".json"), salida);
+            File.WriteAllText(Server.MapPath("~/App_Data/" + dropAsignaturas.SelectedValue + ".json"), salida);
             Label5.Text = dropAsignaturas.SelectedValue + ".json";
             Label4.Visible = true;
             Label5.Visible = true;
