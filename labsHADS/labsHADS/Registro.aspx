@@ -74,8 +74,8 @@
                 <asp:TableRow>
                     <asp:TableCell>Rol</asp:TableCell><asp:TableCell>
                         <asp:RadioButtonList ID="rol" runat="server">
-                            <asp:ListItem Value="alumno" Selected="True">Alumno</asp:ListItem>
-                            <asp:ListItem Value="profesor" Selected="False">Profesor</asp:ListItem>
+                            <asp:ListItem Value="Alumno" Selected="True">Alumno</asp:ListItem>
+                            <asp:ListItem Value="Profesor" Selected="False">Profesor</asp:ListItem>
                         </asp:RadioButtonList>
                     </asp:TableCell>
                 </asp:TableRow>
