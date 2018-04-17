@@ -101,7 +101,12 @@ namespace register
                 MD5 mD5 = MD5.Create();
                 byte[] cryptoPass = System.Text.Encoding.ASCII.GetBytes(pass);
                 cryptoPass = mD5.ComputeHash(cryptoPass);
-                pass = System.Text.Encoding.ASCII.GetString(cryptoPass);
+                //pass = System.Text.Encoding.ASCII.GetString(cryptoPass);
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < cryptoPass.Length - 1; i++)
+                    sb.Append(cryptoPass[i].ToString("X2"));
+                pass = sb.ToString();
 
                 insertSql.Parameters.AddWithValue("@email", email);
                 insertSql.Parameters.AddWithValue("@nombre", nombre);
@@ -205,7 +210,14 @@ namespace login
                 MD5 mD5 = MD5.Create();
                 byte[] cryptoPass = System.Text.Encoding.ASCII.GetBytes(pass);
                 cryptoPass = mD5.ComputeHash(cryptoPass);
-                pass = System.Text.Encoding.ASCII.GetString(cryptoPass);
+                //pass = System.Text.Encoding.ASCII.GetString(cryptoPass);
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < cryptoPass.Length - 1; i++)
+                    sb.Append(cryptoPass[i].ToString("X2"));
+                pass = sb.ToString();
+
+                Console.WriteLine(pass);
 
                 checkSql.Parameters.AddWithValue("@email", email);
                 checkSql.Parameters.AddWithValue("@pass", pass);
@@ -377,8 +389,19 @@ namespace cambio
 
                 SqlCommand checkSql = new SqlCommand(checkQuery, connection);
 
+                MD5 mD5 = MD5.Create();
+                byte[] cryptoPass = System.Text.Encoding.ASCII.GetBytes(pass);
+                cryptoPass = mD5.ComputeHash(cryptoPass);
+                //pass = System.Text.Encoding.ASCII.GetString(cryptoPass);
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < cryptoPass.Length - 1; i++)
+                    sb.Append(cryptoPass[i].ToString("X2"));
+                pass = sb.ToString();
+
                 checkSql.Parameters.AddWithValue("@pass", pass);
                 checkSql.Parameters.AddWithValue("@email", email);
+
 
                 checkSql.ExecuteNonQuery();
 
