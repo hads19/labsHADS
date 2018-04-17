@@ -92,6 +92,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Admin\VerUsuarios.aspx" />
     <Content Include="Alumnos\Alumno.aspx" />
     <Content Include="App_Data\HAS.xml" />
     <Content Include="App_Data\SEG.xml" />
@@ -119,6 +120,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\VerUsuarios.aspx.cs">
+      <DependentUpon>VerUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\VerUsuarios.aspx.designer.cs">
+      <DependentUpon>VerUsuarios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Alumnos\Alumno.aspx.cs">
       <DependentUpon>Alumno.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

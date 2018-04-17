@@ -33,7 +33,7 @@ namespace labsHADS
         protected void login_Click(object sender, EventArgs e)
         {
             string tipo = Login1.logear(email.Text, password.Text);
-            
+
 
             if (tipo.Equals("Profesor"))
             {
@@ -53,6 +53,12 @@ namespace labsHADS
                 Session.Contents.Add("email", email.Text);
                 System.Web.Security.FormsAuthentication.SetAuthCookie("alumno", false);
                 Response.Redirect("Alumnos/Alumno.aspx");
+            }
+            else if (tipo.Equals("Admin"))
+            {
+                Session.Contents.Add("email", email.Text);
+                System.Web.Security.FormsAuthentication.SetAuthCookie("admin", false);
+                Response.Redirect("Admin/VerUsuarios.aspx");
             }
             else
             {

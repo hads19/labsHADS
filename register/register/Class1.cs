@@ -235,9 +235,13 @@ namespace login
                         {
                             result = "Profesor";
                         }
-                        else
+                        else if (tipo.Equals("Alumno"))
                         {
                             result = "Alumno";
+                        }
+                        else
+                        {
+                            result = "Admin";
                         }
                     }
                 }
