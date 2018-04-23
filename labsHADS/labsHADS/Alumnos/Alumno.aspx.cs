@@ -11,13 +11,27 @@ namespace labsHADS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Label3.Text = (string)Session["email"];
         }
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
+           
             Session.Abandon();
             System.Web.Security.FormsAuthentication.SignOut();
             Response.Redirect("../Inicio.aspx");
+        }
+
+        protected void Timer1_Tick1(object sender, EventArgs e)
+        {
+            Label4.Text = "Numero de alumnos: " + Convert.ToString(Application.Contents["numAlumnos"]) + ", Numero de profesores: " + Convert.ToString(Application.Contents["numProfesores"]);
+
+            ListBox1.Items.Clear();
+            ListBox1.DataSource = Application.Contents["alumnos"];
+            ListBox1.DataBind();
+
+            ListBox2.Items.Clear();
+            ListBox2.DataSource = Application.Contents["profesores"];
+            ListBox2.DataBind();
         }
     }
 }
