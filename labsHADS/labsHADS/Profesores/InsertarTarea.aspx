@@ -21,7 +21,7 @@
                 <asp:Label ID="Label1" runat="server" style="z-index: 1; left: 219px; top: 12px; position: absolute; bottom: 34px" Text="PROFESOR" CssClass="auto-style1"></asp:Label>
                 <asp:Label ID="Label2" runat="server" style="z-index: 1; top: 36px; position: absolute; left: 142px" Text="GESTIÓN DE TAREAS GENÉRICAS" CssClass="auto-style1"></asp:Label>
             </div>
-
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 100px; top: 130px; position: absolute" Text="Código"></asp:Label>
             <asp:TextBox ID="TextBoxCodigo" runat="server" style="z-index: 1; left: 220px; top: 125px; position: absolute"></asp:TextBox>
             <asp:RequiredFieldValidator runat="server" ErrorMessage="*Campo obligatorio" ControlToValidate="TextBoxCodigo" ForeColor="Red" style="z-index: 1; left: 400px; top: 125px; position: absolute"></asp:RequiredFieldValidator>
@@ -64,6 +64,9 @@
             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Profesores/TareasProfesor.aspx" style="z-index: 1; left: 534px; top: 337px; position: absolute">Ver Tareas</asp:HyperLink>
 
             <asp:Label ID="Label8" runat="server" style="z-index: 1; left: 103px; top: 405px; position: absolute; width: 197px"></asp:Label>
+
+            <ajaxToolkit:DragPanelExtender ID="Label8_DragPanelExtender" runat="server" BehaviorID="Label8_DragPanelExtender" DragHandleID="Label8" TargetControlID="Label8">
+            </ajaxToolkit:DragPanelExtender>
 
         </div>
     </form>
