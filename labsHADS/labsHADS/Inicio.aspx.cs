@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -34,9 +35,14 @@ namespace labsHADS
         {
             string tipo = Login1.logear(email.Text, password.Text);
 
+            int numAlum = (int) Application.Contents["numAlumnos"];
+            int numProf = (int) Application.Contents["numProfesores"];
+            ArrayList al = (ArrayList)Application.Contents["alumnos"];
+            ArrayList pr = (ArrayList)Application.Contents["profesores"];
 
             if (tipo.Equals("Profesor"))
             {
+                Session.Contents.Add("tipo", "Profesor");
                 Session.Contents.Add("Email", email.Text);
                 if (email.Text == "vadillo@ehu.es")
                 {
@@ -46,12 +52,21 @@ namespace labsHADS
                 {
                     System.Web.Security.FormsAuthentication.SetAuthCookie("profesor", false);
                 }
+                numProf = (int)Application.Contents["numProfesores"] + 1;
+                Application.Contents["numProfesores"] = numProf;
+                pr.Add(email.Text);
+                Application.Contents["profesores"] = pr;
                 Response.Redirect("Profesores/Profesor.aspx");
             }
             else if (tipo.Equals("Alumno"))
             {
+                Session.Contents.Add("tipo", "Alumno");
                 Session.Contents.Add("email", email.Text);
                 System.Web.Security.FormsAuthentication.SetAuthCookie("alumno", false);
+                numAlum = (int)Application.Contents["numAlumnos"] + 1;
+                Application.Contents["numAlumnos"] = numAlum;
+                al.Add(email.Text);
+                Application.Contents["alumnos"] = al;
                 Response.Redirect("Alumnos/Alumno.aspx");
             }
             else if (tipo.Equals("Admin"))
