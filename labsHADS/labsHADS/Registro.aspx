@@ -15,23 +15,38 @@
     <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body style="height: 452px">
+
     <form id="form" runat="server">
         <div style="height: 439px">
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
             <asp:Table ID="datos" runat="server" Style="top: 45px; left: 50px; position: absolute; height: 172px; width: 828px; right: 79px">
                 <asp:TableRow>
+
                     <asp:TableCell>Email</asp:TableCell>
                     <asp:TableCell>
-                        <asp:TextBox runat="server" ID="email" />
-                    </asp:TableCell><asp:TableCell>
-                        <asp:RequiredFieldValidator runat="server" ErrorMessage="*Campo obligatorio"
-                            ControlToValidate="email" ForeColor="Red">
-                        </asp:RequiredFieldValidator>
-                        <asp:RegularExpressionValidator runat="server" 
-                            ErrorMessage="*Formato inválido"
-                            ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" 
-                            ControlToValidate="email" ForeColor="Red">
-                        </asp:RegularExpressionValidator>
+                        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                            <ContentTemplate>
+                                <asp:TextBox runat="server" ID="email" OnTextChanged="email_TextChanged" AutoPostBack="true" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </asp:TableCell>
+                    <asp:TableCell>
+                        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                            <ContentTemplate>
+                                <asp:RequiredFieldValidator runat="server" ErrorMessage="*Campo obligatorio"
+                                    ControlToValidate="email" ForeColor="Red">
+                                </asp:RequiredFieldValidator>
+                                <asp:RegularExpressionValidator runat="server"
+                                    ErrorMessage="*Formato inválido"
+                                    ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"
+                                    ControlToValidate="email" ForeColor="Red">
+                                </asp:RegularExpressionValidator>
+                                <asp:Label ID="validaMail" runat="server" Text=""></asp:Label>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </asp:TableCell>
+
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>Nombre</asp:TableCell><asp:TableCell>
@@ -93,7 +108,8 @@
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
-            <asp:Button ID="sendRegister" Text="Enviar" runat="server" OnClick="SendRegister_Click" Style="top: 408px; left: 49px; position: absolute; height: 26px; width: 53px" />
+                    <asp:Button ID="sendRegister" Text="Enviar" runat="server" OnClick="SendRegister_Click" Style="top: 408px; left: 49px; position: absolute; height: 26px; width: 53px" />
+
             <br />
             <br />
             <asp:Label ID="avisoMail" runat="server" Text="Registro correcto, se te ha enviado un email para verificar tu cuenta."

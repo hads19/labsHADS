@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using register;
+using labsHADS.matriculaWS;
 
 namespace labsHADS
 {
@@ -14,7 +15,6 @@ namespace labsHADS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void SendRegister_Click(object sender, EventArgs e)
@@ -24,6 +24,13 @@ namespace labsHADS
             if (!ValidateCaptcha())
             {
                 avisoMail.Text = "Captcha incorrecto, vuelve a intentarlo.";
+                avisoMail.Visible = true;
+                return;
+            }
+
+            if (validaMail.Text != "Válido")
+            {
+                avisoMail.Text = "El email introducido no está matriculado";
                 avisoMail.Visible = true;
                 return;
             }
@@ -144,6 +151,23 @@ namespace labsHADS
 
             [JsonProperty("error-codes")]
             public List<string> ErrorCodes { get; set; }
+        }
+
+        protected void email_TextChanged(object sender, EventArgs e)
+        {
+            string em = email.Text;
+
+            Matriculas m = new Matriculas();
+            string res = m.comprobar(em);
+            if(res == "SI")
+            {
+                validaMail.Text = "Válido";
+            }
+            if (res == "NO")
+            {
+                validaMail.Text = "Inválido";
+            }
+
         }
     }
 }
