@@ -75,6 +75,12 @@ namespace labsHADS
                 System.Web.Security.FormsAuthentication.SetAuthCookie("admin", false);
                 Response.Redirect("Admin/VerUsuarios.aspx");
             }
+            else if (tipo.Equals("Coordinador"))
+            {
+                Session.Contents.Add("email", email.Text);
+                System.Web.Security.FormsAuthentication.SetAuthCookie("coordinador", false);
+                Response.Redirect("Coordinador/Coordinador.aspx");
+            }
             else
             {
                 Label1.Text = tipo;
