@@ -92,6 +92,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Web References\matriculaWS\comprobarmatricula.wsdl" />
+    <Content Include="Coordinador\Coordinador.aspx" />
     <Content Include="Web References\matriculaWS\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -160,6 +161,13 @@
     </Compile>
     <Compile Include="Confirmar.aspx.designer.cs">
       <DependentUpon>Confirmar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Coordinador\Coordinador.aspx.cs">
+      <DependentUpon>Coordinador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Coordinador\Coordinador.aspx.designer.cs">
+      <DependentUpon>Coordinador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Profesores\Vadillo\ExportarTareas.aspx.cs">
       <DependentUpon>ExportarTareas.aspx</DependentUpon>

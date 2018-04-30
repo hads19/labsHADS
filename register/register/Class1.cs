@@ -239,9 +239,13 @@ namespace login
                         {
                             result = "Alumno";
                         }
-                        else
+                        else if (tipo.Equals("Admin"))
                         {
                             result = "Admin";
+                        }
+                        else
+                        {
+                            result = "Coordinador";
                         }
                     }
                 }
@@ -584,6 +588,58 @@ namespace tareas
 
             return currentTable;
         }
+
+        public static double getTiempoMedio(string asignatura)
+        {
+            try
+            {
+                double result = 0;
+
+                //Definición de la conexión
+                SqlConnection connection = new SqlConnection(connectionString);
+
+                //Comprobamos los valores en la BD
+                connection.Open();
+
+                string tiempoTotal = "SELECT SUM(EstudiantesTareas.HReales) AS media FROM EstudiantesTareas INNER JOIN TareasGenericas ON TareasGenericas.Codigo=EstudiantesTareas.CodTarea WHERE TareasGenericas.CodAsig= @asignatura";
+
+                SqlCommand checkSql = new SqlCommand(tiempoTotal, connection);
+
+                checkSql.Parameters.AddWithValue("@asignatura", asignatura);
+
+                SqlDataReader reader = checkSql.ExecuteReader();
+
+                reader.Read();
+                double tiempo = Convert.ToDouble(reader["media"]);
+
+                connection.Close();
+
+                return tiempo;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 
     public static class IEXml
