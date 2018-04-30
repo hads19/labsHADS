@@ -42,5 +42,25 @@ namespace labsHADS.Properties {
                 return ((string)(this["labsHADS_localhost_WebService1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:46404/AverageAsig.asmx")]
+        public string labsHADS_localhost1_AverageAsig {
+            get {
+                return ((string)(this["labsHADS_localhost1_AverageAsig"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:46404/AverageAsig.asmx")]
+        public string labsHADS_ref4_AverageAsig {
+            get {
+                return ((string)(this["labsHADS_ref4_AverageAsig"]));
+            }
+        }
     }
 }

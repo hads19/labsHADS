@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using tareas;
+using labsHADS.ref4;
 
 namespace labsHADS.Coordinador1
 {
@@ -12,7 +13,9 @@ namespace labsHADS.Coordinador1
    {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //Esto quitar
+            AverageAsig av = new AverageAsig();
+            Label3.Text = av.Funciona();
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
@@ -23,7 +26,7 @@ namespace labsHADS.Coordinador1
         }
         protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Label3.Text = Convert.ToString(Tareas.getTiempoMedio(DropDownList1.SelectedValue));
+            //Label3.Text = Convert.ToString(Tareas.getTiempoMedio(DropDownList1.SelectedValue) / Tareas.getAlumnosTarea(DropDownList1.SelectedValue));
         }
     }
 }
