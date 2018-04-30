@@ -33,11 +33,15 @@ namespace labsHADS.ref4 {
         
         private System.Threading.SendOrPostCallback FuncionaOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getTiempoMedioOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getAlumnosTareaOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
         public AverageAsig() {
-            this.Url = global::labsHADS.Properties.Settings.Default.labsHADS_localhost1_AverageAsig;
+            this.Url = global::labsHADS.Properties.Settings.Default.labsHADS_ref4_AverageAsig;
             if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
                 this.UseDefaultCredentials = true;
                 this.useDefaultCredentialsSetExplicitly = false;
@@ -76,6 +80,12 @@ namespace labsHADS.ref4 {
         
         /// <remarks/>
         public event FuncionaCompletedEventHandler FuncionaCompleted;
+        
+        /// <remarks/>
+        public event getTiempoMedioCompletedEventHandler getTiempoMedioCompleted;
+        
+        /// <remarks/>
+        public event getAlumnosTareaCompletedEventHandler getAlumnosTareaCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/HelloWorld", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -128,6 +138,64 @@ namespace labsHADS.ref4 {
             if ((this.FuncionaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.FuncionaCompleted(this, new FuncionaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getTiempoMedio", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double getTiempoMedio(string asignatura) {
+            object[] results = this.Invoke("getTiempoMedio", new object[] {
+                        asignatura});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getTiempoMedioAsync(string asignatura) {
+            this.getTiempoMedioAsync(asignatura, null);
+        }
+        
+        /// <remarks/>
+        public void getTiempoMedioAsync(string asignatura, object userState) {
+            if ((this.getTiempoMedioOperationCompleted == null)) {
+                this.getTiempoMedioOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetTiempoMedioOperationCompleted);
+            }
+            this.InvokeAsync("getTiempoMedio", new object[] {
+                        asignatura}, this.getTiempoMedioOperationCompleted, userState);
+        }
+        
+        private void OngetTiempoMedioOperationCompleted(object arg) {
+            if ((this.getTiempoMedioCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getTiempoMedioCompleted(this, new getTiempoMedioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getAlumnosTarea", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public double getAlumnosTarea(string asignatura) {
+            object[] results = this.Invoke("getAlumnosTarea", new object[] {
+                        asignatura});
+            return ((double)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getAlumnosTareaAsync(string asignatura) {
+            this.getAlumnosTareaAsync(asignatura, null);
+        }
+        
+        /// <remarks/>
+        public void getAlumnosTareaAsync(string asignatura, object userState) {
+            if ((this.getAlumnosTareaOperationCompleted == null)) {
+                this.getAlumnosTareaOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetAlumnosTareaOperationCompleted);
+            }
+            this.InvokeAsync("getAlumnosTarea", new object[] {
+                        asignatura}, this.getAlumnosTareaOperationCompleted, userState);
+        }
+        
+        private void OngetAlumnosTareaOperationCompleted(object arg) {
+            if ((this.getAlumnosTareaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getAlumnosTareaCompleted(this, new getAlumnosTareaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -198,6 +266,58 @@ namespace labsHADS.ref4 {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void getTiempoMedioCompletedEventHandler(object sender, getTiempoMedioCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getTiempoMedioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getTiempoMedioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void getAlumnosTareaCompletedEventHandler(object sender, getAlumnosTareaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getAlumnosTareaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getAlumnosTareaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public double Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
             }
         }
     }

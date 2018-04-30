@@ -22,6 +22,34 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getTiempoMedio">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="asignatura" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTiempoMedioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getTiempoMedioResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAlumnosTarea">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="asignatura" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAlumnosTareaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getAlumnosTareaResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="HelloWorldSoapIn">
@@ -36,6 +64,18 @@
   <wsdl:message name="FuncionaSoapOut">
     <wsdl:part name="parameters" element="tns:FuncionaResponse" />
   </wsdl:message>
+  <wsdl:message name="getTiempoMedioSoapIn">
+    <wsdl:part name="parameters" element="tns:getTiempoMedio" />
+  </wsdl:message>
+  <wsdl:message name="getTiempoMedioSoapOut">
+    <wsdl:part name="parameters" element="tns:getTiempoMedioResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAlumnosTareaSoapIn">
+    <wsdl:part name="parameters" element="tns:getAlumnosTarea" />
+  </wsdl:message>
+  <wsdl:message name="getAlumnosTareaSoapOut">
+    <wsdl:part name="parameters" element="tns:getAlumnosTareaResponse" />
+  </wsdl:message>
   <wsdl:portType name="AverageAsigSoap">
     <wsdl:operation name="HelloWorld">
       <wsdl:input message="tns:HelloWorldSoapIn" />
@@ -44,6 +84,14 @@
     <wsdl:operation name="Funciona">
       <wsdl:input message="tns:FuncionaSoapIn" />
       <wsdl:output message="tns:FuncionaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTiempoMedio">
+      <wsdl:input message="tns:getTiempoMedioSoapIn" />
+      <wsdl:output message="tns:getTiempoMedioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAlumnosTarea">
+      <wsdl:input message="tns:getAlumnosTareaSoapIn" />
+      <wsdl:output message="tns:getAlumnosTareaSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="AverageAsigSoap" type="tns:AverageAsigSoap">
@@ -66,6 +114,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getTiempoMedio">
+      <soap:operation soapAction="http://tempuri.org/getTiempoMedio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAlumnosTarea">
+      <soap:operation soapAction="http://tempuri.org/getAlumnosTarea" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="AverageAsigSoap12" type="tns:AverageAsigSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -80,6 +146,24 @@
     </wsdl:operation>
     <wsdl:operation name="Funciona">
       <soap12:operation soapAction="http://tempuri.org/Funciona" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTiempoMedio">
+      <soap12:operation soapAction="http://tempuri.org/getTiempoMedio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAlumnosTarea">
+      <soap12:operation soapAction="http://tempuri.org/getAlumnosTarea" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
