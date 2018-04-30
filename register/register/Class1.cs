@@ -602,13 +602,10 @@ namespace tareas
                 connection.Open();
 
                 string tiempoTotal = "SELECT SUM(EstudiantesTareas.HReales) AS media FROM EstudiantesTareas INNER JOIN TareasGenericas ON TareasGenericas.Codigo=EstudiantesTareas.CodTarea WHERE TareasGenericas.CodAsig= @asignatura";
-
                 SqlCommand checkSql = new SqlCommand(tiempoTotal, connection);
-
                 checkSql.Parameters.AddWithValue("@asignatura", asignatura);
-
+                
                 SqlDataReader reader = checkSql.ExecuteReader();
-
                 reader.Read();
                 double tiempo = Convert.ToDouble(reader["media"]);
 
@@ -622,7 +619,35 @@ namespace tareas
             }
         }
 
+        public static double getAlumnosTarea(string asignatura)
+        {
+            try
+            {
+                double result = 0;
 
+                //Definición de la conexión
+                SqlConnection connection = new SqlConnection(connectionString);
+
+                //Comprobamos los valores en la BD
+                connection.Open();
+
+                string alumnosPorAsig = "SELECT COUNT(EstudiantesGrupo.Email) AS alumno FROM EstudiantesGrupo INNER JOIN GruposClase ON EstudiantesGrupo.Grupo = GruposClase.codigo WHERE(GruposClase.codigoasig = @asignatura1)";
+                SqlCommand checkSql1 = new SqlCommand(alumnosPorAsig, connection);
+                checkSql1.Parameters.AddWithValue("@asignatura1", asignatura);
+
+                SqlDataReader reader1 = checkSql1.ExecuteReader();
+                reader1.Read();
+                double alumno = Convert.ToDouble(reader1["alumno"]);
+
+                connection.Close();
+
+                return alumno;
+            }
+            catch (Exception e)
+            {
+                return 0;
+            }
+        }
 
 
 

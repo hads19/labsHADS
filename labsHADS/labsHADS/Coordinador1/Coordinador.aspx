@@ -16,6 +16,7 @@
             <asp:Label ID="Label2" runat="server" Text="Nota media de la asignatura:"></asp:Label>
             <asp:Label ID="Label3" runat="server" Text=""></asp:Label>
             <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">LinkButton</asp:LinkButton>
+            <asp:Label ID="Label4" runat="server" Text=""></asp:Label>
         </div>
     </form>
 </body>
