@@ -5,10 +5,10 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "labsHADS", "labsHADS\labsHADS.csproj", "{AF655A8A-ECFF-4C2A-B76E-B3914C8E0BA6}"
 	ProjectSection(ProjectDependencies) = postProject
-		{46E04709-1625-4811-B840-61828E9FBDAC} = {46E04709-1625-4811-B840-61828E9FBDAC}
+		{60773EF3-EE71-4451-8D4A-A3B684572F65} = {60773EF3-EE71-4451-8D4A-A3B684572F65}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HADSws", "HADSws\HADSws.csproj", "{46E04709-1625-4811-B840-61828E9FBDAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wsHADS", "wsHADS\wsHADS.csproj", "{60773EF3-EE71-4451-8D4A-A3B684572F65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,10 +20,10 @@ Global
 		{AF655A8A-ECFF-4C2A-B76E-B3914C8E0BA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF655A8A-ECFF-4C2A-B76E-B3914C8E0BA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF655A8A-ECFF-4C2A-B76E-B3914C8E0BA6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{46E04709-1625-4811-B840-61828E9FBDAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46E04709-1625-4811-B840-61828E9FBDAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46E04709-1625-4811-B840-61828E9FBDAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46E04709-1625-4811-B840-61828E9FBDAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60773EF3-EE71-4451-8D4A-A3B684572F65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60773EF3-EE71-4451-8D4A-A3B684572F65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60773EF3-EE71-4451-8D4A-A3B684572F65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60773EF3-EE71-4451-8D4A-A3B684572F65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
