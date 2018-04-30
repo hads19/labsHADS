@@ -79,7 +79,7 @@ namespace labsHADS
             {
                 Session.Contents.Add("email", email.Text);
                 System.Web.Security.FormsAuthentication.SetAuthCookie("coordinador", false);
-                Response.Redirect("Coordinador/Coordinador.aspx");
+                Response.Redirect("Coordinador1/Coordinador.aspx");
             }
             else
             {

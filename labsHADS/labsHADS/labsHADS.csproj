@@ -98,6 +98,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Web References\localhost\AverageHADS.wsdl" />
+    <Content Include="Coordinador1\Coordinador.aspx" />
     <Content Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -171,6 +172,13 @@
     </Compile>
     <Compile Include="Confirmar.aspx.designer.cs">
       <DependentUpon>Confirmar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Coordinador1\Coordinador.aspx.cs">
+      <DependentUpon>Coordinador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Coordinador1\Coordinador.aspx.designer.cs">
+      <DependentUpon>Coordinador.aspx</DependentUpon>
     </Compile>
     <Compile Include="Profesores\Vadillo\ExportarTareas.aspx.cs">
       <DependentUpon>ExportarTareas.aspx</DependentUpon>
