@@ -32,5 +32,15 @@ namespace labsHADS.Properties {
                 return ((string)(this["labsHADS_matriculaWS_Matriculas"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:44437/AverageHADS.asmx")]
+        public string labsHADS_localhost_WebService1 {
+            get {
+                return ((string)(this["labsHADS_localhost_WebService1"]));
+            }
+        }
     }
 }
