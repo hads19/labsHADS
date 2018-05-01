@@ -6,7 +6,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Resgistro</title>
+    <title>Registro</title>
     <style>
         #form {
             height: 436px;
@@ -67,11 +67,20 @@
                 </asp:TableRow>
                 <asp:TableRow>
                     <asp:TableCell>Contraseña</asp:TableCell><asp:TableCell>
-                        <asp:TextBox runat="server" ID="password" TextMode="Password" />
+                        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                            <ContentTemplate>
+                                <asp:TextBox runat="server" ID="password" TextMode="Password" AutoPostBack="true" OnTextChanged="pass_TextChanged"/>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </asp:TableCell><asp:TableCell>
-                        <asp:RequiredFieldValidator runat="server" ErrorMessage="*Campo obligatorio"
-                            ControlToValidate="password" ForeColor="Red">
-                        </asp:RequiredFieldValidator>
+                        <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+                            <ContentTemplate>
+                                <asp:RequiredFieldValidator runat="server" ErrorMessage="*Campo obligatorio"
+                                    ControlToValidate="password" ForeColor="Red">
+                                </asp:RequiredFieldValidator>
+                                <asp:Label ID="validaPassl" runat="server" Text=""></asp:Label>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </asp:TableCell>
                 </asp:TableRow>
                 <asp:TableRow>
@@ -108,7 +117,7 @@
                     </asp:TableCell>
                 </asp:TableRow>
             </asp:Table>
-                    <asp:Button ID="sendRegister" Text="Enviar" runat="server" OnClick="SendRegister_Click" Style="top: 408px; left: 49px; position: absolute; height: 26px; width: 53px" />
+            <asp:Button ID="sendRegister" Text="Enviar" runat="server" OnClick="SendRegister_Click" Style="top: 408px; left: 49px; position: absolute; height: 26px; width: 53px" />
 
             <br />
             <br />

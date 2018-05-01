@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using register;
 using labsHADS.matriculaWS;
+using labsHADS.al29c;
 
 namespace labsHADS
 {
@@ -15,6 +16,10 @@ namespace labsHADS
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Page.IsPostBack)
+            {
+                password.Attributes["Value"] = password.Text;
+            }
         }
 
         protected void SendRegister_Click(object sender, EventArgs e)
@@ -31,6 +36,13 @@ namespace labsHADS
             if (validaMail.Text != "Válido")
             {
                 avisoMail.Text = "El email introducido no está matriculado";
+                avisoMail.Visible = true;
+                return;
+            }
+
+            if (validaPassl.Text != "Válido")
+            {
+                avisoMail.Text = "La contraseña introducido es demasiado débil";
                 avisoMail.Visible = true;
                 return;
             }
@@ -168,6 +180,22 @@ namespace labsHADS
                 validaMail.Text = "Inválido";
             }
 
+        }
+
+        protected void pass_TextChanged(object sender, EventArgs e)
+        {
+            string pass = password.Text;
+
+            comprobar c = new comprobar();
+            string res = c.Callcomprobar(pass);
+            if (res == "VALIDA")
+            {
+                validaPassl.Text = "Válido";
+            }
+            if (res == "INVALIDA")
+            {
+                validaPassl.Text = "Inválido";
+            }
         }
     }
 }

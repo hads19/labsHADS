@@ -111,6 +111,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Content Include="Web References\al29c\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
+    <None Include="Web References\al29c\servicioContrasena.wsdl" />
     <None Include="Web References\localhost1\AverageAsig.wsdl" />
     <Content Include="Web References\localhost1\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -296,6 +301,11 @@
     <Compile Include="Profesores\VerEstadisticas.aspx.designer.cs">
       <DependentUpon>VerEstadisticas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Web References\al29c\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\localhost1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -379,6 +389,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>labsHADS_localhost1_AverageAsig</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://al29c.000webhostapp.com/SWLabMejorado/servicioContrasena.php%3fwsdl">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\al29c\</RelPath>
+      <UpdateFromURL>https://al29c.000webhostapp.com/SWLabMejorado/servicioContrasena.php%3fwsdl</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>labsHADS_al29c_comprobar</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="https://wshads.azurewebsites.net/AverageAsig.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>

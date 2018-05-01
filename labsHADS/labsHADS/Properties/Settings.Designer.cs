@@ -72,5 +72,15 @@ namespace labsHADS.Properties {
                 return ((string)(this["labsHADS_net_azurewebsites_wshads_AverageAsig"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://al29c.000webhostapp.com:443/SWLabMejorado/servicioContrasena.php")]
+        public string labsHADS_al29c_comprobar {
+            get {
+                return ((string)(this["labsHADS_al29c_comprobar"]));
+            }
+        }
     }
 }
