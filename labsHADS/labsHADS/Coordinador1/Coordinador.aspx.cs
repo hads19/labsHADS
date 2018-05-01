@@ -5,7 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using tareas;
-using labsHADS.ref4;
+//using labsHADS.ref4;
+using labsHADS.net.azurewebsites.wshads;
 
 namespace labsHADS.Coordinador1
 {

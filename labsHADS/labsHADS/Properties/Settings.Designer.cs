@@ -62,5 +62,15 @@ namespace labsHADS.Properties {
                 return ((string)(this["labsHADS_ref4_AverageAsig"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://wshads.azurewebsites.net/AverageAsig.asmx")]
+        public string labsHADS_net_azurewebsites_wshads_AverageAsig {
+            get {
+                return ((string)(this["labsHADS_net_azurewebsites_wshads_AverageAsig"]));
+            }
+        }
     }
 }

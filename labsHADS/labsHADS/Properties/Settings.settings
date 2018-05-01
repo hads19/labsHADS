@@ -14,5 +14,8 @@
     <Setting Name="labsHADS_ref4_AverageAsig" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost:46404/AverageAsig.asmx</Value>
     </Setting>
+    <Setting Name="labsHADS_net_azurewebsites_wshads_AverageAsig" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://wshads.azurewebsites.net/AverageAsig.asmx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

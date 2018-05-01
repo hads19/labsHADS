@@ -128,6 +128,11 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
+    <None Include="Web References\net.azurewebsites.wshads\AverageAsig.wsdl" />
+    <Content Include="Web References\net.azurewebsites.wshads\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <None Include="Web References\ref4\AverageAsig.wsdl" />
     <None Include="Web References\ref4\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -165,6 +170,7 @@
     <Content Include="Profesores\TareasProfesor.aspx" />
     <Content Include="Profesores\VerEstadisticas.aspx" />
     <None Include="Web References\ref4\AverageAsig.disco" />
+    <None Include="Web References\net.azurewebsites.wshads\AverageAsig.disco" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -305,6 +311,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\net.azurewebsites.wshads\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\ref4\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -368,6 +379,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>labsHADS_localhost1_AverageAsig</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="https://wshads.azurewebsites.net/AverageAsig.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\net.azurewebsites.wshads\</RelPath>
+      <UpdateFromURL>https://wshads.azurewebsites.net/AverageAsig.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>labsHADS_net_azurewebsites_wshads_AverageAsig</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
